@@ -6,11 +6,11 @@ requires = [
 ]
 
 setup(
-    name='Receiptify',
+    name='Spotify test',
     version='1.0',
-    description='An application that gets your top spotify tracks and turns them into a receipt',
-    author='Erik Toor',
-    author_email='eriktoor@gmail.com',
+    description='idk yet',
+    author='Ibrahim Khan ',
+    author_email='iboo11khan@gmail.com',
     keywords='web flask',
     packages=find_packages(),
     include_package_data=True,
