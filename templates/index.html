@@ -1,21 +1,68 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-        <title>{{ title }}</title>
-    </head>
-    <body>
-        <center>
-            <h1>Receiptify</h1>
-            <h2>Top Track Generator</h2>
-    
-            <button class="spotifyButton" onclick="location.href = '/login';" >Log in with spotify</button>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Add your custom styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
 
-            <p class="info">
-                This website was inspired by the Instagram account 
-                <a href="https://www.instagram.com/albumreceipts/">@albumreceipts</a>
-                !
-            </p>
-        </center>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
 
-    </body>
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .spotify-button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            background-color: #1db954;
+            color: #fff;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .spotify-button:hover {
+            background-color: #1aa34a;
+        }
+
+        .info {
+            font-size: 14px;
+            color: #666;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="logo">Receiptify</h1>
+        <h2 class="subtitle">Top Track Generator</h2>
+
+        <a class="spotify-button" href="/login">Log in with Spotify</a>
+    </div>
+</body>
 </html>

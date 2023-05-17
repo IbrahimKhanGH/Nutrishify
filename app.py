@@ -1,3 +1,8 @@
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
+
+
 from flask import Flask, request, url_for, session, redirect, render_template
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
@@ -16,7 +21,7 @@ def create_spotify_oauth():
     return SpotifyOAuth(
         client_id=CLIENT_ID,
         client_secret=CLIENT_SECRET,
-        redirect_uri=url_for("redirectPage",_external=True), 
+        redirect_uri= "http://127.0.0.1:5000/redirect", 
         scope="user-top-read user-library-read"
     )
 
