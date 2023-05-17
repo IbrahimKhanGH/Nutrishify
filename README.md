@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # receiptify-flask
 
 ## Steps to getting spotify credentials 
@@ -21,3 +22,6 @@ After you get credentials...
 3. docker stack deploy -c docker-compose.yml swarmapp
 4. docker service ls 
 
+=======
+# spotifytest
+>>>>>>> f5f01f186f39ab549253133298e80794277aaf26
