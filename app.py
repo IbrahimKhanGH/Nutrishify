@@ -91,7 +91,7 @@ def getTracks():
     if os.path.exists(".cache"): 
         os.remove(".cache")
 
-    return render_template('receipt.html', user_display_name=current_user_name, short_term=short_term, medium_term=medium_term, long_term=long_term, currentTime=gmtime())
+    return render_template('nutrition.html', user_display_name=current_user_name, short_term=short_term, medium_term=medium_term, long_term=long_term, currentTime=gmtime())
 
 
 @app.template_filter('strftime')
