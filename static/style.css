@@ -23,16 +23,11 @@
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
-    background-color: rgb(54, 54, 54);
+    background-color: rgb(255, 255, 255);
 }
 
   .receiptContainer {
-    background-image: url(wrinkled-paper.jpg);
-    background-position: center;
-    width: 340px;
-    filter: brightness(110%);
     padding: 20px;
-    text-transform: uppercase;
 }
 
 .logo {
@@ -44,8 +39,6 @@
 
 p, table, .date {
   font-family: "receipt", "Courier New", Courier, monospace;
-  /* font-size: 2.1rem;
-  line-height: 2rem; */
 }
 
 td {
@@ -54,6 +47,7 @@ td {
 
 .tracks {
   margin: 5px 0vh;
+  color: rgb(0, 0, 0);
 }
 
 table {
@@ -96,4 +90,8 @@ table {
   border-radius: 10px;
   color: white;
   font-family: "Helvetica Neue", Helvetica, Geneva, Tahoma, sans-serif;
+}
+
+.title{
+  color: black;
 }

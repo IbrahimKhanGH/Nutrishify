@@ -1,8 +1,3 @@
-import logging
-logging.basicConfig(level=logging.DEBUG)
-
-
-
 from flask import Flask, request, url_for, session, redirect, render_template
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
@@ -10,6 +5,10 @@ import time
 from time import gmtime, strftime
 from credentials import CLIENT_ID, CLIENT_SECRET, SECRET_KEY
 import os
+
+
+if __name__ == '__main__':
+    app.run()
 
 # Defining consts
 TOKEN_CODE = "token_info"
@@ -74,17 +73,17 @@ def getTracks():
 
     current_user_name = sp.current_user()['display_name']
     short_term = sp.current_user_top_tracks(
-        limit=10,
+        limit=50,
         offset=0,
         time_range=SHORT_TERM,
     )
     medium_term = sp.current_user_top_tracks(
-        limit=10,
+        limit=50,
         offset=0,
         time_range=MEDIUM_TERM,
     )
     long_term = sp.current_user_top_tracks(
-        limit=10,
+        limit=50,
         offset=0,
         time_range=LONG_TERM,
     )
