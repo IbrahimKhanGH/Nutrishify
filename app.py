@@ -109,12 +109,12 @@ def getTracks():
 
     current_user_name = sp.current_user()['display_name']
     short_term = sp.current_user_top_tracks(
-        limit=100,
+        limit=25,
         offset=0,
         time_range=SHORT_TERM,
     )
     medium_term = sp.current_user_top_tracks(
-        limit=100,
+        limit=50,
         offset=0,
         time_range=MEDIUM_TERM,
     )
@@ -174,6 +174,7 @@ def getTracks():
 
             # If the song still wasn't found, return 'None'
             return 'None'
+            
 
     # Define a function to fetch lyrics
     def fetch_lyrics(song):
@@ -189,7 +190,7 @@ def getTracks():
     with concurrent.futures.ThreadPoolExecutor() as executor:
         short_term_lyrics = list(executor.map(fetch_lyrics, short_term['items']))
 
-    # Calculate the top words from the short-term lyrics
+    # Calculate the top from the short-term lyrics
     short_term_top_words = get_top_words(short_term_lyrics)
 
     # Repeat the above steps for medium_term and long_term
@@ -223,7 +224,7 @@ def getTracks():
                            long_term_lyrics=long_term_lyrics,
                            short_term_top_words=short_term_top_words,
                            medium_term_top_words=medium_term_top_words,
-                           long_term_top_words=long_term_top_words,
+                           long_term_top_words=long_term_top_words, 
                            currentTime=gmtime())
 
 

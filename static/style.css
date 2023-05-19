@@ -1,33 +1,29 @@
-
-
-
-  #short_term_receipt {
-    display: none 
-  }
-
-  #downloadPicButton {
-    display: none
-  }
-
-  #medium_term_receipt {
-    display: none 
-  }
-
-  #long_term_receipt {
-    display: none 
-  }
-
-
-  body {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #333;
-    background-color: rgb(255, 255, 255);
+#short_term_receipt {
+  display: none;
 }
 
-  .nutritionContainer {
-    padding: 20px;
+#downloadPicButton {
+  display: none;
+}
+
+#medium_term_receipt {
+  display: none;
+}
+
+#long_term_receipt {
+  display: none;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: rgb(255, 255, 255);
+}
+
+.nutritionContainer {
+  padding: 20px;
 }
 
 .logo {
@@ -37,7 +33,9 @@
   text-align: center;
 }
 
-p, table, .date {
+p,
+table,
+.date {
   font-family: "receipt", "Courier New", Courier, monospace;
 }
 
@@ -52,13 +50,8 @@ td {
 
 table {
   border: none;
-}
-
-table {
   max-width: 100%;
   background-color: transparent;
-}
-table {
   border-collapse: collapse;
   border-spacing: 0;
 }
@@ -92,7 +85,7 @@ table {
   font-family: "Helvetica Neue", Helvetica, Geneva, Tahoma, sans-serif;
 }
 
-.title{
+.title {
   color: black;
 }
 
@@ -111,4 +104,133 @@ table {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.5;
+}
+
+.image {
+  width: 250px;
+  float: left;
+  margin: 20px;
+}
+
+.performance-facts {
+  border: 1px solid black;
+  margin: 20px;
+  float: left;
+  width: 280px;
+  padding: 0.5rem;
+}
+
+.performance-facts__title {
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 0 0 0.25rem 0;
+}
+
+.performance-facts__header {
+  border-bottom: 10px solid black;
+  padding: 0 0 0.25rem 0;
+  margin: 0 0 0.5rem 0;
+}
+
+.performance-facts__header p {
+  margin: 0;
+}
+
+.performance-facts__table {
+  width: 100%;
+}
+
+.performance-facts__table thead tr th,
+.performance-facts__table thead tr td {
+  border: 0;
+}
+
+.performance-facts__table th,
+.performance-facts__table td {
+  font-weight: normal;
+  text-align: left;
+  padding: 0.25rem 0;
+  border-top: 1px solid black;
+  white-space: nowrap;
+}
+
+.performance-facts__table td:last-child {
+  text-align: right;
+}
+
+.performance-facts__table .blank-cell {
+  width: 1rem;
+  border-top: 0;
+}
+
+.performance-facts__table .thick-row th,
+.performance-facts__table .thick-row td {
+  border-top-width: 5px;
+}
+
+.small-info {
+  font-size: 0.7rem;
+}
+
+.performance-facts__table--small {
+  border-bottom: 1px solid #999;
+  margin: 0 0 0.5rem 0;
+}
+
+.performance-facts__table--small thead tr {
+  border-bottom: 1px solid black;
+}
+
+.performance-facts__table--small td:last-child {
+  text-align: left;
+}
+
+.performance-facts__table--small th,
+.performance-facts__table--small td {
+  border: 0;
+  padding: 0;
+}
+
+.performance-facts__table--grid {
+  margin: 0 0 0.5rem 0;
+}
+
+.performance-facts__table--grid td:last-child {
+  text-align: left;
+}
+
+.performance-facts__table--grid td:last-child::before {
+  content: "•";
+  font-weight: bold;
+  margin: 0 0.25rem 0 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.thick-end {
+  border-bottom: 10px solid black;
+}
+
+.thin-end {
+  border-bottom: 1px solid black;
+}
+
+.Total-Word-Count {
+  font-size: xx-large;
+  font: bold;
+}
+
+.serving-size {
+  font: bold;
+}
+
+.duration {
+  text-align: right;
+}
+
+.performance-facts__table tr:nth-child(1) th:first-child,
+.performance-facts__table tr:nth-child(1) td {
+  border-top: none;
 }
