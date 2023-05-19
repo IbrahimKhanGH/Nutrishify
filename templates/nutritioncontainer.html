@@ -1,4 +1,4 @@
-{% macro nutritionContainer(display_name, songs, id, duration, song_lyrics) -%}
+{% macro nutritionContainer(display_name, songs, id, duration, song_lyrics, top_words_list) -%}
 <div class="nutritionContainer" id="{{ id }}">
   <h2 class="title">TOP SONGS</h2>
   <table class="tracks">
@@ -9,19 +9,20 @@
     </tr>
     {% endfor %}
   </table>
-  
+
   {% if song_lyrics %}
   <div class="lyrics">
     <h3 class="title">Song Lyrics</h3>
     <pre>{{ song_lyrics }}</pre>
   </div>
   {% endif %}
-  {% if top_words %}
+
+  {% if top_words_list %}
     <div class="topWords">
       <h3 class="title">Top Words</h3>
       <ul>
-        {% for word, count in top_words %}
-          <li>{{ word }} - {{ count }}</li>
+        {% for word in top_words_list %}
+          <li>{{ word }}</li>
         {% endfor %}
       </ul>
     </div>

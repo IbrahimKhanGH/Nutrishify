@@ -100,11 +100,13 @@
     <div style="width: 100%; height: auto" class="nutritionContainerWrapper">
       <center>
         {{ nutritionContainer(user_display_name, short_term['items'],
-        'short_term_receipt', 'LAST MONTH',short_term_lyrics) }} {{
-        nutritionContainer(user_display_name, medium_term['items'],
-        'medium_term_receipt', 'LAST 6 MONTHS',medium_term_lyrics) }} {{
+        'short_term_receipt', 'LAST MONTH', short_term_lyrics,
+        short_term_top_words) }} {{ nutritionContainer(user_display_name,
+        medium_term['items'], 'medium_term_receipt', 'LAST 6 MONTHS',
+        medium_term_lyrics, medium_term_top_words) }} {{
         nutritionContainer(user_display_name, long_term['items'],
-        'long_term_receipt', 'ALL TIME',long_term_lyrics) }}
+        'long_term_receipt', 'ALL TIME', long_term_lyrics, long_term_top_words)
+        }}
       </center>
     </div>
 

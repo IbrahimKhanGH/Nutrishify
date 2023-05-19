@@ -2,14 +2,12 @@ from flask import Flask, request, url_for, session, redirect, render_template
 import lyricsgenius
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+from collections import Counter
+import re
 import time
 from time import gmtime, strftime
 from credentials import CLIENT_ID, CLIENT_SECRET, GENIUS_KEY, SECRET_KEY
 import os
-
-
-if __name__ == '__main__':
-    app.run()
 
 # Defining consts
 TOKEN_CODE = "token_info"
@@ -69,6 +67,34 @@ def get_token():
     return token_info
 
 
+def get_top_words(lyrics_list):
+    # Combine all the lyrics into a single string
+    lyrics_text = " ".join(lyrics_list)
+
+    # Tokenize the string into individual words
+    words = re.findall(r'\b\w+\b', lyrics_text)
+
+    # Convert the words to lowercase and remove non-alphanumeric characters
+    words = [word.lower() for word in words if word.isalnum()]
+
+    # Filter out stop words
+    # Add more stop words as needed
+    stop_words = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', 'your', 'yours', 'yourself', 'yourselves', 'he', 'his', 'himself', 'she', 'hers', 'herself', 'it', 'its', 'itself', 'they', 'them', 'their', 'theirs', 'themselves', 'what', 'which', 'who', 'whom', 'this', 'that', 'these', 'those', 'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as', 'until',
+                  'while', 'of', 'at', 'by', 'for', 'with', 'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', 'should', 'now']
+    words = [word for word in words if word not in stop_words]
+
+    # Count the occurrences of each word
+    word_counts = Counter(words)
+
+    # Sort the dictionary based on word frequencies in descending order
+    top_words = word_counts.most_common(7)
+
+    # Extract only the words from the top_words list
+    top_words_list = [word for word, count in top_words]
+
+    return top_words_list
+
+
 @app.route('/getTracks')
 def getTracks():
     try:
@@ -97,23 +123,56 @@ def getTracks():
         time_range=LONG_TERM,
     )
 
-    genius = lyricsgenius.Genius(GENIUS_KEY)
-    song_name = short_term['items'][0]['name']
-    artist_name = short_term['items'][0]['artists'][0]['name']
-    song = genius.search_song(song_name, artist_name)
+    def clean_lyrics(lyrics):
+        # Remove contributors' names
+        cleaned_lyrics = re.sub(r'\[\w+\]', '', lyrics)
+
+        # Remove line breaks
+        cleaned_lyrics = cleaned_lyrics.replace('\n', ' ')
+
+        # Remove numbers and special characters
+        cleaned_lyrics = re.sub(r'[^a-zA-Z\s]', '', cleaned_lyrics)
+
+        # Replace consecutive whitespace characters with a single space
+        cleaned_lyrics = re.sub(r'\s+', ' ', cleaned_lyrics)
+
+        # Convert lyrics to lowercase
+        cleaned_lyrics = cleaned_lyrics.lower()
+
+        return cleaned_lyrics
 
     def get_lyrics(song_name, artist_name):
         # Format the song name and artist name for the search query
         search_query = f'{song_name} {artist_name}'
-        
+
         # Search for the song lyrics
         song = genius.search_song(search_query)
-        
-        if song is not None:
-            return song.lyrics
-        else:
-            return 'Lyrics not found'
 
+        if song is not None and artist_name.lower() in song.artist.lower():
+            lyrics = clean_lyrics(song.lyrics)  # Clean the lyrics
+            return lyrics
+        else:
+            # If the song wasn't found, try removing the featuring artist information and search again
+            if "(feat." in song_name:
+                modified_song_name = song_name[:song_name.index(
+                    "(feat.")].strip()
+                search_query = f'{modified_song_name} {artist_name}'
+                song = genius.search_song(search_query)
+
+                if song is not None and artist_name.lower() in song.artist.lower():
+                    lyrics = clean_lyrics(song.lyrics)  # Clean the lyrics
+                return lyrics
+
+            # If the song still wasn't found, try swapping the position of the song name and artist name in the search query
+            search_query_swapped = f'{artist_name} {song_name}'
+            song = genius.search_song(search_query_swapped)
+
+            if song is not None and artist_name.lower() in song.artist.lower():
+                lyrics = clean_lyrics(song.lyrics)  # Clean the lyrics
+                return lyrics
+
+            # If the song still wasn't found, return 'None'
+            return 'None'
 
     short_term_lyrics = []
     for song in short_term['items']:
@@ -121,22 +180,39 @@ def getTracks():
         lyrics = get_lyrics(song['name'], song['artists'][0]['name'])
         short_term_lyrics.append(lyrics)
 
+    # Calculate the top words from the short-term lyrics
+    short_term_top_words = get_top_words(short_term_lyrics)
+
     # Repeat the above steps for medium_term and long_term
     medium_term_lyrics = []
     for song in medium_term['items']:
         lyrics = get_lyrics(song['name'], song['artists'][0]['name'])
         medium_term_lyrics.append(lyrics)
 
+    medium_term_top_words = get_top_words(medium_term_lyrics)
+
     long_term_lyrics = []
     for song in long_term['items']:
         lyrics = get_lyrics(song['name'], song['artists'][0]['name'])
         long_term_lyrics.append(lyrics)
 
+    long_term_top_words = get_top_words(long_term_lyrics)
+
     if os.path.exists(".cache"):
         os.remove(".cache")
 
-    return render_template('nutrition.html', user_display_name=current_user_name, short_term=short_term, medium_term=medium_term, long_term=long_term, short_term_lyrics=short_term_lyrics, medium_term_lyrics=medium_term_lyrics, long_term_lyrics=long_term_lyrics, currentTime=gmtime())
-
+    return render_template('nutrition.html',
+                           user_display_name=current_user_name,
+                           short_term=short_term,
+                           medium_term=medium_term,
+                           long_term=long_term,
+                           short_term_lyrics=short_term_lyrics,
+                           medium_term_lyrics=medium_term_lyrics,
+                           long_term_lyrics=long_term_lyrics,
+                           short_term_top_words=short_term_top_words,
+                           medium_term_top_words=medium_term_top_words,
+                           long_term_top_words=long_term_top_words,
+                           currentTime=gmtime())
 
 
 @app.template_filter('strftime')
