@@ -1,6 +1,7 @@
 {% macro nutritionContainer(display_name, songs, id, duration, song_lyrics, top_words_list) -%}
 <div class="nutritionContainer" id="{{ id }}">
-  <h2 class="title">TOP SONGS</h2>
+
+<!--<h2 class="title">TOP SONGS</h2>
   <table class="tracks">
     {% for song in songs %}
     <tr>
@@ -16,6 +17,7 @@
     <pre>{{ song_lyrics }}</pre>
   </div>
   {% endif %}
+-->
 
   {% if top_words_list %}
     <div class="topWords">
