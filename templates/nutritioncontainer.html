@@ -6,21 +6,31 @@ top_words_list) -%}
     <section class="performance-facts">
       <header class="performance-facts__header">
         <h1 class="performance-facts__title">Spotify Nutrition</h1>
-        <p>{{ user_display_name }}</p>
+        <hr class="title-line" />
+        <p class="user-name">{{ user_display_name }}</p>
+        
         <tr class="serving-size">
-          <th colspan="2">
-            <b>Serving Size</b>
-          </th>
-            <td>{{ duration }}</td>
+          <table class="performance-facts__table">
+            <tr class="serving-size">
+              <th colspan="2">
+                <b>Serving Size</b>
+              </th>
+              <td class="duration-cell">
+                <b>{{ duration }}</b>
+              </td>
+            </tr>
+          </table>
         </tr>
       </header>
+
       <table class="performance-facts__table">
         <tbody>
+
           <tr class="Total-Word-Count">
             <th colspan="2">
               <b>Words</b>
             </th>
-            <td><b>{{ 69420 }}</b></td>
+            <td><b>{{ song_lyrics|word_count }}</b></td>
           </tr>
           <tr class="thick-row">
             <td colspan="3" class="small-info">
@@ -29,58 +39,65 @@ top_words_list) -%}
           </tr>
           <tr>
             <th colspan="2">
-              <b>{{ top_words_list[0] }}</b>
-              66
+              <b>{{ top_words_list[0][0] }}</b>
+              {{top_words_list[0][1]}}
             </th>
             <td>
-              <b>22%</b>
+              <b>{{ '%.1f' % (top_words_list[0][1] / song_lyrics|word_count * 100) }}%</b>
+            </td>
+
+          </tr>
+          <tr>
+            <td class="blank-cell"></td>
+            <th>{{ top_words_list[1][0] }} 
+              {{ top_words_list[1][1]}}
+            </th>
+            <td>
+              <b>{{ '%.1f' % (top_words_list[1][1] / song_lyrics|word_count * 100) }}%</b>
             </td>
           </tr>
           <tr>
             <td class="blank-cell"></td>
-            <th>{{ top_words_list[1] }}</th>
-            <td>
-              <b>22%</b>
-            </td>
-          </tr>
-          <tr>
-            <td class="blank-cell"></td>
-            <th>{{ top_words_list[2] }}</th>
-            <td></td>
-          </tr>
-          <tr>
-            <th colspan="2">
-              <b>{{ top_words_list[3] }}</b>
-              55mg
+            <th>{{ top_words_list[2][0] }}
+              {{ top_words_list[2][1] }}
             </th>
             <td>
-              <b>18%</b>
+              <b>{{ '%.1f' % (top_words_list[2][1] / song_lyrics|word_count * 100) }}%</b>
             </td>
           </tr>
           <tr>
             <th colspan="2">
-              <b>{{ top_words_list[4] }}</b>
-              40mg
+              <b>{{ top_words_list[3][0] }}</b>
+              {{ top_words_list[3][1] }}
             </th>
             <td>
-              <b>2%</b>
+              <b>{{ '%.1f' % (top_words_list[3][1] / song_lyrics|word_count * 100) }}%</b>
             </td>
           </tr>
           <tr>
             <th colspan="2">
-              <b>{{ top_words_list[5] }}</b>
-              17g
+              <b>{{ top_words_list[4][0] }}</b>
+              {{ top_words_list[4][1] }}
             </th>
             <td>
-              <b>6%</b>
+              <b>{{ '%.1f' % (top_words_list[4][1] / song_lyrics|word_count * 100)}}%</b>
+            </td>
+          </tr>
+          <tr>
+            <th colspan="2">
+              <b>{{ top_words_list[5][0] }}</b>
+              {{  top_words_list[5][1] }}
+            </th>
+            <td>
+              <b>{{ '%.1f'% (top_words_list[5][1] / song_lyrics|word_count * 100) }}%</b>
             </td>
           </tr>
           <tr class="thick-end">
             <th colspan="2">
-              <b>{{ top_words_list[6] }}</b>
-              3g
+              <b>{{ top_words_list[6][0] }}</b>
+              {{ top_words_list[6][1] }}
             </th>
-            <td></td>
+            <td><b>{{ '%.1f'% (top_words_list[6][1] / song_lyrics|word_count * 100) }}%</b></td>
           </tr>
         </tbody>
       </table>
@@ -88,20 +105,23 @@ top_words_list) -%}
       <table class="performance-facts__table--grid">
         <tbody>
           <tr>
-            <td colspan="2">Vitamin A 10%</td>
-            <td>Vitamin C 0%</td>
+            <td colspan="2">EDM 35%</td>
+            <td>Rap 30%%</td>
           </tr>
           <tr class="thin-end">
-            <td colspan="2">Calcium 10%</td>
-            <td>Iron 6%</td>
+            <td colspan="2">Bass House 25%</td>
+            <td>Melodic 10%</td>
           </tr>
         </tbody>
       </table>
 
       <p class="small-info">
-        * Percent Daily Values are based on a 2,000 calorie diet. Your daily
-        values may be higher or lower depending on your calorie needs:
+        * Your Top Song over {{duration}} was AfterShock by Cash Cash 
       </p>
+      <p class="small-info">
+        * You listen too way too much cash cash  
+      </p> 
+    
     </section>
   </div>
   {% endif %}

@@ -1,3 +1,4 @@
+
 #short_term_receipt {
   display: none;
 }
@@ -61,7 +62,7 @@ table {
   text-align: center;
   text-decoration: none;
   padding: 1vh 3vh;
-  background-color: #0056ff;
+  background-color: #1db954;
   font-size: 14px;
   cursor: pointer;
   border-radius: 10px;
@@ -113,7 +114,7 @@ table {
 }
 
 .performance-facts {
-  border: 1px solid black;
+  border: 3px solid black;
   margin: 20px;
   float: left;
   width: 280px;
@@ -121,15 +122,15 @@ table {
 }
 
 .performance-facts__title {
-  font-weight: bold;
+  font-weight: 900;
   font-size: 2rem;
   margin: 0 0 0.25rem 0;
 }
 
 .performance-facts__header {
   border-bottom: 10px solid black;
-  padding: 0 0 0.25rem 0;
-  margin: 0 0 0.5rem 0;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
 }
 
 .performance-facts__header p {
@@ -224,6 +225,7 @@ table {
 
 .serving-size {
   font: bold;
+  font: xx-large;
 }
 
 .duration {
@@ -234,3 +236,37 @@ table {
 .performance-facts__table tr:nth-child(1) td {
   border-top: none;
 }
+
+.duration-cell {
+  margin-left: 10px; 
+}
+.user-name {
+  font-family: "Arial", sans-serif;
+  font-size: 15px;
+}
+
+.title-line {
+  border: none; 
+  border-top: 1px solid #000; 
+  margin-top: 0px; 
+}
+
+.performance-facts__title {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 2.25rem; /* Increase the font size to make it bigger */
+  margin: 0; /* Remove any margin */
+  padding: 0; /* Remove any padding */
+  width: 100%; /* Make it fill the whole width of the parent element */
+}
+
+.performance-facts__table th,
+.performance-facts__table td {
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+
+body {
+  color: rgb(0,0,0); /* Use RGB values for a darker color */
+}
+
