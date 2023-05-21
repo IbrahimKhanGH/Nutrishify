@@ -7,17 +7,19 @@ top_words_list) -%}
       <header class="performance-facts__header">
         <h1 class="performance-facts__title">Spotify Nutrition</h1>
         <hr class="title-line" />
-        <p class="user-name">{{ user_display_name }}</p>
-        
         <tr class="serving-size">
           <table class="performance-facts__table">
+
             <tr class="serving-size">
+
               <th colspan="2">
-                <b>Serving Size {{songs.name}}</b>
+                <b>Serving Size</b>
               </th>
+
               <td class="duration-cell">
                 <b>{{ duration }}</b>
               </td>
+
             </tr>
           </table>
         </tr>
@@ -30,6 +32,7 @@ top_words_list) -%}
             <th colspan="2">
               <b>Words</b>
             </th>
+
             <td><b>{{ song_lyrics|word_count }}</b></td>
           </tr>
           <tr class="thick-row">
@@ -97,9 +100,17 @@ top_words_list) -%}
 
       <table class="performance-facts__table">
         <tbody>
+
           <tr class="thin-end">
+            <td colspan="2"> <b>User</b> </td>     <td>{{ display_name }} </td>
+          </tr>
+
+          <tr class="thin-end">
+
             <td colspan="2"><b>Date</b></td>
+
             <td>
+
               <script>
                 var currentDate = new Date();
                 var options = { month: 'short', day: 'numeric', year: 'numeric' };
@@ -107,19 +118,12 @@ top_words_list) -%}
           
                 document.write(dateString);
               </script>
+              
             </td>
           </tr>
+         
           <tr class="thin-end">
-            <td colspan="2"><b>Top Genre </b></td>
-            <td>
-            EDM
-            </td>
-          </tr>
-          <tr class="thin-end">
-            <td colspan="2"><b>Design by </b></td>
-            <td>
-              @lbraah
-            </td>
+            <td colspan="2"><b>Design by</b></td>        <td>@lbraah</td>
           </tr>
           </tr>
         </tbody>
@@ -128,20 +132,13 @@ top_words_list) -%}
       <p class="small-info">
         * Created by Ibrahim Khan and inspired by @albulmnutrition on instagram
       </p> 
+
       <p class="small-info">
         * SpotifyNutrition.com
       </p>
+
     </section>
   </div>
   {% endif %}
-<!-- 
-  {% for song in songs %}
-  <tr>
-      <td class="name">
-          {{ song.name }} - {{ song.artists[0].name }}
-      </td>
-  </tr>
-{% endfor %}
--->
 </div>
 {%- endmacro %}

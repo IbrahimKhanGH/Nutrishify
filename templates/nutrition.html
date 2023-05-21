@@ -13,7 +13,7 @@
     {% from "nutritionContainer.html" import nutritionContainer with context %}
 
     <script>
-      var activeReceipt;
+      var activeLabel;
 
       function showContent(id) {
         // set all of the other ones to invisible
@@ -28,7 +28,7 @@
         document.getElementById(id).style.display = "inline-block";
         document.getElementById("downloadPicButton").style.display =
           "inline-block";
-        activeReceipt = id;
+        activeLabel = id;
       }
 
       function hiddenClone(element) {
@@ -63,7 +63,7 @@
             document.body.removeChild(clone);
             var link = document.createElement("a");
             link.href = dataURL;
-            link.download = `${activeReceipt}.png`;
+            link.download = `${activeLabel}.png`;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -99,32 +99,24 @@
       <center>
         <div>
           <button
-            onclick="showContent('short_term_receipt')"
+            onclick="showContent('short_term_label')"
             class="generatePicButton"
           >
             LAST MONTH
           </button>
           <button
-            onclick="showContent('medium_term_receipt')"
+            onclick="showContent('medium_term_label')"
             class="generatePicButton"
           >
             LAST 6 MONTHS
           </button>
           <button
-            onclick="showContent('long_term_receipt')"
+            onclick="showContent('long_term_label')"
             class="generatePicButton"
           >
             ALL TIME
           </button>
-          <button onclick="getTopSongs('short_term')">
-            Top Songs - Short Term
-          </button>
-          <button onclick="getTopSongs('medium_term')">
-            Top Songs - Medium Term
-          </button>
-          <button onclick="getTopSongs('long_term')">
-            Top Songs - Long Term
-          </button>
+
         </div>
       </center>
     </div>
@@ -132,12 +124,12 @@
     <div style="width: 100%; height: auto" class="nutritionContainerWrapper">
       <center>
         {{ nutritionContainer(user_display_name, short_term['items'],
-        'short_term_receipt', 'Last Month', short_term_lyrics,
+        'short_term_label', 'Last Month', short_term_lyrics,
         short_term_top_words) }} {{ nutritionContainer(user_display_name,
-        medium_term['items'], 'medium_term_receipt', 'Last 6 Months',
+        medium_term['items'], 'medium_term_label', 'Last 6 Months',
         medium_term_lyrics, medium_term_top_words) }} {{
         nutritionContainer(user_display_name, long_term['items'],
-        'long_term_receipt', 'All Time', long_term_lyrics, long_term_top_words)
+        'long_term_label', 'All Time', long_term_lyrics, long_term_top_words)
         }}
       </center>
     </div>

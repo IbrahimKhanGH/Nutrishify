@@ -1,5 +1,5 @@
 
-#short_term_receipt {
+#short_term_label {
   display: none;
 }
 
@@ -7,11 +7,11 @@
   display: none;
 }
 
-#medium_term_receipt {
+#medium_term_label {
   display: none;
 }
 
-#long_term_receipt {
+#long_term_label{
   display: none;
 }
 
@@ -19,13 +19,16 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #333;
+  color: rgb(0, 0, 0);
   background-color: rgb(255, 255, 255);
 }
 
 .nutritionContainer {
   padding: 20px;
+  background-color: white; /* Add a background color to ensure the text is visible */
+  color: black; /* Set the text color to black */
 }
+
 
 .logo {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
@@ -52,7 +55,7 @@ td {
 table {
   border: none;
   max-width: 100%;
-  background-color: transparent;
+  background-color: white;
   border-collapse: collapse;
   border-spacing: 0;
 }
@@ -70,20 +73,6 @@ table {
   font-family: "Helvetica Neue", Helvetica, Geneva, Tahoma, sans-serif;
   margin: 10px;
   width: auto;
-}
-
-.spotifyButton {
-  margin: 2vh auto;
-  text-align: center;
-  text-decoration: none;
-  padding: 2vh 5vh;
-  background-color: #1db954;
-  font-size: 20px;
-  border: none;
-  cursor: pointer;
-  border-radius: 10px;
-  color: white;
-  font-family: "Helvetica Neue", Helvetica, Geneva, Tahoma, sans-serif;
 }
 
 .title {
@@ -270,3 +259,48 @@ body {
   color: rgb(0,0,0); /* Use RGB values for a darker color */
 }
 
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: rgb(0, 0, 0);
+  margin-bottom: 30px;
+}
+
+.spotify-button {
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  padding: 1vh 3vh;
+  background-color: #1db954;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+  font-family: "Helvetica Neue", Helvetica, Geneva, Tahoma, sans-serif;
+  margin: 10px;
+  width: auto;
+}
+
+
+.spotify-button:hover {
+  background-color: #1aa34a;
+}

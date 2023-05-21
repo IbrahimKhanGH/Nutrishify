@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ title }}</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="logo">Choose Your Spotify Nutrition Label</h1>
+      <button class="spotify-button" onclick="window.location.href='/wordLabel'">
+        Top Words
+      </button>
+      <button class="spotify-button" onclick="window.location.href='/artistLabel'">
+        Top Artists
+      </button>
+      <button class="spotify-button" onclick="window.location.href='/songLabel'">
+        Top Songs
+      </button>
+    </div>
+  </body>
+</html>
