@@ -13,7 +13,7 @@ top_words_list) -%}
           <table class="performance-facts__table">
             <tr class="serving-size">
               <th colspan="2">
-                <b>Serving Size</b>
+                <b>Serving Size {{songs.name}}</b>
               </th>
               <td class="duration-cell">
                 <b>{{ duration }}</b>
@@ -34,13 +34,12 @@ top_words_list) -%}
           </tr>
           <tr class="thick-row">
             <td colspan="3" class="small-info">
-              <b>* relative word %</b>
+              * relative word % 
             </td>
           </tr>
           <tr>
             <th colspan="2">
-              <b>{{ top_words_list[0][0] }}</b>
-              {{top_words_list[0][1]}}
+              <b>{{ top_words_list[0][0] }}</b>&nbsp;&nbsp;&nbsp;{{top_words_list[0][1]}}
             </th>
             <td>
               <b>{{ '%.1f' % (top_words_list[0][1] / song_lyrics|word_count * 100) }}%</b>
@@ -49,17 +48,15 @@ top_words_list) -%}
           </tr>
           <tr>
             <td class="blank-cell"></td>
-            <th>{{ top_words_list[1][0] }} 
-              {{ top_words_list[1][1]}}
-            </th>
+            <th>{{ top_words_list[1][0] }}&nbsp;&nbsp;&nbsp;{{ top_words_list[1][1]}}</th>
             <td>
               <b>{{ '%.1f' % (top_words_list[1][1] / song_lyrics|word_count * 100) }}%</b>
             </td>
           </tr>
           <tr>
             <td class="blank-cell"></td>
-            <th>{{ top_words_list[2][0] }}
-              {{ top_words_list[2][1] }}
+            <th>
+              <i>{{ top_words_list[2][0] }}</i>&nbsp;&nbsp;&nbsp;{{ top_words_list[2][1] }}
             </th>
             <td>
               <b>{{ '%.1f' % (top_words_list[2][1] / song_lyrics|word_count * 100) }}%</b>
@@ -67,8 +64,7 @@ top_words_list) -%}
           </tr>
           <tr>
             <th colspan="2">
-              <b>{{ top_words_list[3][0] }}</b>
-              {{ top_words_list[3][1] }}
+              <b>{{ top_words_list[3][0] }}</b>&nbsp;&nbsp;&nbsp;{{ top_words_list[3][1] }}
             </th>
             <td>
               <b>{{ '%.1f' % (top_words_list[3][1] / song_lyrics|word_count * 100) }}%</b>
@@ -76,8 +72,7 @@ top_words_list) -%}
           </tr>
           <tr>
             <th colspan="2">
-              <b>{{ top_words_list[4][0] }}</b>
-              {{ top_words_list[4][1] }}
+              <b>{{ top_words_list[4][0] }}</b>&nbsp;&nbsp;&nbsp;{{ top_words_list[4][1] }}
             </th>
             <td>
               <b>{{ '%.1f' % (top_words_list[4][1] / song_lyrics|word_count * 100)}}%</b>
@@ -85,8 +80,7 @@ top_words_list) -%}
           </tr>
           <tr>
             <th colspan="2">
-              <b>{{ top_words_list[5][0] }}</b>
-              {{  top_words_list[5][1] }}
+              <b>{{ top_words_list[5][0] }}</b>&nbsp;&nbsp;&nbsp;{{  top_words_list[5][1] }}
             </th>
             <td>
               <b>{{ '%.1f'% (top_words_list[5][1] / song_lyrics|word_count * 100) }}%</b>
@@ -94,42 +88,60 @@ top_words_list) -%}
           </tr>
           <tr class="thick-end">
             <th colspan="2">
-              <b>{{ top_words_list[6][0] }}</b>
-              {{ top_words_list[6][1] }}
+              <b>{{ top_words_list[6][0] }}</b>&nbsp;&nbsp;&nbsp;{{ top_words_list[6][1] }}
             </th>
             <td><b>{{ '%.1f'% (top_words_list[6][1] / song_lyrics|word_count * 100) }}%</b></td>
           </tr>
         </tbody>
       </table>
 
-      <table class="performance-facts__table--grid">
+      <table class="performance-facts__table">
         <tbody>
-          <tr>
-            <td colspan="2">EDM 35%</td>
-            <td>Rap 30%%</td>
+          <tr class="thin-end">
+            <td colspan="2"><b>Date</b></td>
+            <td>
+              <script>
+                var currentDate = new Date();
+                var options = { month: 'short', day: 'numeric', year: 'numeric' };
+                var dateString = currentDate.toLocaleDateString(undefined, options);
+          
+                document.write(dateString);
+              </script>
+            </td>
           </tr>
           <tr class="thin-end">
-            <td colspan="2">Bass House 25%</td>
-            <td>Melodic 10%</td>
+            <td colspan="2"><b>Top Genre </b></td>
+            <td>
+            EDM
+            </td>
+          </tr>
+          <tr class="thin-end">
+            <td colspan="2"><b>Design by </b></td>
+            <td>
+              @lbraah
+            </td>
+          </tr>
           </tr>
         </tbody>
       </table>
-
+      
       <p class="small-info">
-        * Your Top Song over {{duration}} was AfterShock by Cash Cash 
-      </p>
-      <p class="small-info">
-        * You listen too way too much cash cash  
+        * Created by Ibrahim Khan and inspired by @albulmnutrition on instagram
       </p> 
-    
+      <p class="small-info">
+        * SpotifyNutrition.com
+      </p>
     </section>
   </div>
   {% endif %}
+<!-- 
+  {% for song in songs %}
+  <tr>
+      <td class="name">
+          {{ song.name }} - {{ song.artists[0].name }}
+      </td>
+  </tr>
+{% endfor %}
+-->
 </div>
 {%- endmacro %}
-
-<!--<ul>
-  {% for word in top_words_list %}
-  <li>{{ word }}</li>
-  {% endfor %}
-</ul> -->

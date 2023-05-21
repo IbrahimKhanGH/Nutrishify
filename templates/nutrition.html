@@ -72,6 +72,29 @@
       });
     </script>
 
+  <script>
+    function getTopSongs(timeRange) {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var response = JSON.parse(xhr.responseText);
+          // Handle the response, such as updating the UI with the top songs data
+          var topSongsContainer = document.getElementById('topSongsContainer');
+          topSongsContainer.innerHTML = ''; // Clear the container
+          response.topSongs.forEach(function(song) {
+            var listItem = document.createElement('li');
+            listItem.textContent = song.name + ' - ' + song.artist;
+            topSongsContainer.appendChild(listItem);
+          });
+        }
+      };
+      xhr.open('GET', '/getTopSongs?timeRange=' + timeRange);
+      xhr.send();
+    }
+  </script>
+
+
+
     <div style="width: 100%; height: auto" class="buttons">
       <center>
         <div>
@@ -92,6 +115,15 @@
             class="generatePicButton"
           >
             ALL TIME
+          </button>
+          <button onclick="getTopSongs('short_term')">
+            Top Songs - Short Term
+          </button>
+          <button onclick="getTopSongs('medium_term')">
+            Top Songs - Medium Term
+          </button>
+          <button onclick="getTopSongs('long_term')">
+            Top Songs - Long Term
           </button>
         </div>
       </center>

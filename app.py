@@ -9,6 +9,8 @@ from time import gmtime, strftime
 from credentials import CLIENT_ID, CLIENT_SECRET, GENIUS_KEY, SECRET_KEY
 import os
 import concurrent.futures
+from flask import jsonify
+
 
 # Defining consts
 TOKEN_CODE = "token_info"
@@ -122,17 +124,17 @@ def getTracks():
 
 
     short_term = sp.current_user_top_tracks(
-        limit=5,
+        limit=15,
         offset=0,
         time_range=SHORT_TERM,
     )
     medium_term = sp.current_user_top_tracks(
-        limit=5,
+        limit=30,
         offset=0,
         time_range=MEDIUM_TERM,
     )
     long_term = sp.current_user_top_tracks(
-        limit=5,
+        limit=45,
         offset=0,
         time_range=LONG_TERM,
     )
@@ -239,6 +241,25 @@ def getTracks():
                            medium_term_top_words=medium_term_top_words,
                            long_term_top_words=long_term_top_words, 
                            currentTime=gmtime())
+
+@app.route('/getTopSongs')
+def getTopSongs():
+    time_range = request.args.get('timeRange')
+
+    # Implement the logic to retrieve the top songs based on the selected time period
+    # Modify the code to fetch the top songs and return the relevant data as a response
+
+    # Example response format:
+    response = {
+        'timeRange': time_range,
+        'topSongs': [
+            {'name': 'Song 1', 'artist': 'Artist 1'},
+            {'name': 'Song 2', 'artist': 'Artist 2'},
+            # Add more songs as needed
+        ]
+    }
+
+    return jsonify(response)
 
 
 @app.template_filter('strftime')
