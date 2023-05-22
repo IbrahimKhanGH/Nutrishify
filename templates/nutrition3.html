@@ -15,26 +15,29 @@
 
   <body>
     {% include 'navbar.html' %}
-    {% from "nutritionContainer2.html" import nutritionContainer2 with context %}
+    {% from "nutritionContainer3.html" import nutritionContainer3 with context %}
 
     <script>
       var activeLabel;
 
-function showContent(id) {
-  // Hide all other containers
-  document.querySelectorAll(".nutritionContainer2").forEach(function (container) {
-    container.style.display = "none";
-  });
+      function showContent(id) {
+        // set all of the other ones to invisible
+        for (
+          let i = 0;
+          i < document.querySelectorAll(".nutritionContainer3").length;
+          i++
+        ) {
+          document.querySelectorAll(".nutritionContainer3")[i].style.display =
+            "none";
+        }
+        document.getElementById(id).style.display = "inline-block";
+        document.getElementById("downloadPicButton").style.display =
+          "inline-block";
+        activeLabel = id;
 
-  // Show the selected container
-  document.getElementById(id).style.display = "inline-block";
-  document.getElementById("downloadPicButton").style.display = "inline-block";
-  activeLabel = id;
-
-  // Fetch and update the top songs based on the selected time range
-  getTopSongs(id);
-}
-
+        // Fetch and update the top songs based on the selected time range
+        getTopSongs(id);
+      }
 
       function hiddenClone(element) {
         // Create clone of element
@@ -53,13 +56,13 @@ function showContent(id) {
 
       $(document).ready(function () {
         // Global variable
-        var element = $(".nutritionContainer2Wrapper");
+        var element = $(".nutritionContainer3Wrapper");
 
         // Global variable
         var getCanvas;
 
         $("#downloadPicButton").on("click", function () {
-          var offScreen = document.querySelector(".nutritionContainer2Wrapper");
+          var offScreen = document.querySelector(".nutritionContainer3Wrapper");
           window.scrollTo(0, 0);
           var clone = hiddenClone(offScreen);
           // Use clone with htm2canvas and delete clone
@@ -96,48 +99,42 @@ function showContent(id) {
       }
     </script>
 
-<div style="width: 100%; height: auto" class="buttons">
-    <center>
-      <div class="generatePicButtonSection">
-        <button
-          onclick="showContent('short_term_label')"
-          class="generatePicButton"
-        >
-          LAST MONTH
-        </button>
-        <button
-          onclick="showContent('medium_term_label')"
-          class="generatePicButton"
-        >
-          LAST 6 MONTHS
-        </button>
-        <button
-          onclick="showContent('long_term_label')"
-          class="generatePicButton"
-        >
-          ALL TIME
-        </button>
-      </div>
-    </center>
-  </div>
-
-  <script>
-    // Auto-click the short_term label
-    window.addEventListener('load', function() {
-      document.getElementById('short_term_label').click();
-    });
-  </script>
-
-    <div style="width: 100%; height: auto" class="nutritionContainer2Wrapper">
+    <div style="width: 100%; height: auto" class="buttons">
       <center>
-
-        {{ nutritionContainer2(user_display_name, short_term['items'], 'short_term_label', 'Last Month') }},
-
-        {{ nutritionContainer2(user_display_name, medium_term['items'], 'medium_term_label', 'Last 6 Months') }},
-
-        {{ nutritionContainer2(user_display_name, long_term['items'], 'long_term_label', 'All Time') }}
+        <div class="generatePicButtonSection">
+          <button
+            onclick="showContent('short_term_label')"
+            class="generatePicButton"
+          >
+            LAST MONTH
+          </button>
+          <button
+            onclick="showContent('medium_term_label')"
+            class="generatePicButton"
+          >
+            LAST 6 MONTHS
+          </button>
+          <button
+            onclick="showContent('long_term_label')"
+            class="generatePicButton"
+          >
+            ALL TIME
+          </button>
+        </div>
       </center>
     </div>
+
+    <div style="width: 100%; height: auto" class="nutritionContainer3Wrapper">
+        <center>
+          {{ nutritionContainer3(user_display_name, short_term['items'], 'short_term_label', 'Last Month') }}
+          {{ nutritionContainer3(user_display_name, medium_term['items'], 'medium_term_label', 'Last 6 Months') }}
+          {{ nutritionContainer3(user_display_name, long_term['items'], 'long_term_label', 'All Time') }}
+        </center>
+      </div>
+      
+      
+
+      
 
     <center>
       <button class="generatePicButton" id="downloadPicButton">Download</button>

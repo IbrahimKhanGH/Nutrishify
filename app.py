@@ -84,13 +84,42 @@ def get_token():
 
 @app.route('/chooseLabel')
 def chooseLabel():
-    choose = "bruh"
     return render_template('chooseLabel.html')
 
 @app.route('/artistLabel')
 def artistLabel():
-    choose = "bruh"
-    return render_template('artistLabel.html')
+    try:
+        token_info = get_token()
+    except:
+        print("user not logged in")
+        return redirect("/")
+    sp = spotipy.Spotify(
+        auth=token_info['access_token'],
+    )
+
+    current_user_name = sp.current_user()['display_name']
+
+    short_term = sp.current_user_top_artists(
+        limit=15,
+        offset=0,
+        time_range=SHORT_TERM,
+    )
+    medium_term = sp.current_user_top_artists(
+        limit=30,
+        offset=0,
+        time_range=MEDIUM_TERM,
+    )
+    long_term = sp.current_user_top_artists(
+        limit=45,
+        offset=0,
+        time_range=LONG_TERM,
+    )
+
+    return render_template('nutrition3.html', user_display_name=current_user_name,
+                           short_term=short_term, medium_term=medium_term,
+                           long_term=long_term)
+
+
 
 @app.route('/songLabel')
 def songLabel():
@@ -104,7 +133,6 @@ def songLabel():
     )
 
     current_user_name = sp.current_user()['display_name']
-
 
     short_term = sp.current_user_top_tracks(
         limit=15,
@@ -122,7 +150,7 @@ def songLabel():
         time_range=LONG_TERM,
     )
     
-    return render_template('nutrition2.html',user_display_name=current_user_name, short_term=short_term, medium_term=medium_term, long_term=long_term, current_user_name=current_user_name)
+    return render_template('nutrition2.html',user_display_name=current_user_name, short_term=short_term, medium_term=medium_term, long_term=long_term)
 
     
 

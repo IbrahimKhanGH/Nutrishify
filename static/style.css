@@ -16,7 +16,7 @@
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: rgb(0, 0, 0);
@@ -24,16 +24,28 @@ body {
 }
 
 .nutritionContainer {
-  padding: 20px;
+  padding: 0px;
+  background-color: white; /* Add a background color to ensure the text is visible */
+  color: black; /* Set the text color to black */
+}
+
+.nutritionContainer2 {
+  padding: 0px;
+  background-color: white; /* Add a background color to ensure the text is visible */
+  color: black; /* Set the text color to black */
+}
+
+.nutritionContainer3{
+  padding: 0px;
   background-color: white; /* Add a background color to ensure the text is visible */
   color: black; /* Set the text color to black */
 }
 
 
 .logo {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
-  font-weight: 600;
-  font-size: 2.3rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 4rem;
   text-align: center;
   color: rgb(255, 255, 255);
   margin-bottom: 20px;
@@ -72,9 +84,13 @@ table {
   cursor: pointer;
   border-radius: 10px;
   color: white;
-  font-family: "Helvetica Neue", Helvetica, Geneva, Tahoma, sans-serif;
+  font-family: "Montserrat", sans-serif;
   width: auto;
-  margin: 80px auto 0; /* Adjust the top margin value to create space below the navigation bar */
+  margin: 20px;
+}
+
+.generatePicButtonSection{
+  margin: 60px auto 0; 
 }
 
 .title {
@@ -91,8 +107,25 @@ table {
   border: 3px solid black;
   margin: 20px;
   float: left;
-  width: 305px;
+  width: 340px;
   padding: 0.5rem;
+}
+
+.performance-facts2 {
+  border: 3px solid black;
+  margin: 20px;
+  float: left;
+  width: 420px;
+  padding: 0.5rem;
+}
+
+.performance-facts3 {
+  border: 3px solid black;
+  margin: 12px;
+  float: left;
+  width: 340px;
+  padding: 0.5rem;
+  
 }
 
 .performance-facts__title {
@@ -215,7 +248,7 @@ table {
   margin-left: 10px; 
 }
 .user-name {
-  font-family: "Arial", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 15px;
 }
 
@@ -226,7 +259,7 @@ table {
 }
 
 .performance-facts__title {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: bold;
   font-size: 2.25rem; /* Increase the font size to make it bigger */
   margin: 0; /* Remove any margin */
@@ -236,7 +269,7 @@ table {
 
 .performance-facts__table th,
 .performance-facts__table td {
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 
@@ -245,53 +278,118 @@ body {
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Montserrat", sans-serif;
   background-color: #ffffff;
   color: rgb(0, 0, 0);
 }
 
 .container {
-  max-width: 600px;
-  margin: 80px auto 0; /* Adjust the top margin value to create space below the navigation bar */
+  max-width: 900px;
+  margin: 100px auto 0; /* Adjust the top margin value to create space below the navigation bar */
   padding: 20px;
   text-align: center;
 }
 
 
-.subtitle {
-  font-size: 18px;
-  color: rgb(0, 0, 0);
-  margin-bottom: 30px;
+.animated-button,
+button.animated-button {
+	position: relative;
+	display: block;
+	margin: 30px auto 0;
+	padding: 14px 15px;
+	color: rgb(24, 23, 23);
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	overflow: hidden;
+	letter-spacing: .08em;
+	border-radius: 0;
+	text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	transition: all 1s ease;
+  width: 400px;
+  background: transparent;
 }
 
-.spotify-button {
-  border: none;
-  text-align: center;
-  text-decoration: none;
-  padding: 2vh 5vh;
-  background-color: #1db954;
-  font-size: 30px;
-  cursor: pointer;
-  border-radius: 10px;
-  color: rgb(255, 255, 255);
-  font-family: "Helvetica Neue", Helvetica, Geneva, Tahoma, sans-serif;
-  margin: 30px;
-  white-space: nowrap;
+.animated-button:after,
+button.animated-button:after {
+	content: "";
+	position: absolute;
+	height: 0%;
+	left: 50%;
+	top: 50%;
+	width: 150%;
+	z-index: -1;
+	-webkit-transition: all 0.75s ease 0s;
+	-moz-transition: all 0.75s ease 0s;
+	-o-transition: all 0.75s ease 0s;
+	transition: all 0.75s ease 0s;
 }
 
-
-.spotify-button:hover {
-  background-color: #1aa34a;
+.animated-button:hover,
+button.animated-button:hover {
+	color: #fff;
+	text-shadow: none;
 }
+
+.animated-button:hover:after,
+button.animated-button:hover:after {
+	height: 450%;
+}
+
+.animated-button.spotify-button,
+button.animated-button.spotify-button {
+	color: #fff;
+	cursor: pointer;
+	display: block;
+	position: relative;
+	border: 2px solid #1db954;
+	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.animated-button.spotify-button:hover,
+button.animated-button.spotify-button:hover {
+	color: #000 !important;
+	background-color: transparent;
+	text-shadow: none;
+}
+
+.animated-button.spotify-button:hover:before,
+button.animated-button.spotify-button:hover:before {
+	left: 0%;
+	right: auto;
+	width: 100%;
+}
+
+.animated-button.spotify-button:before,
+button.animated-button.spotify-button:before {
+	display: block;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	height: 100%;
+	width: 0px;
+	z-index: -1;
+	content: '';
+	color: #000 !important;
+	background: #1db954;
+	transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
 
 .home-text{
   color: rgb(209, 206, 206);
+  font-size: large;
 }
 
 .subtitle{
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family:  "Montserrat", sans-serif;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-align: center;
   color: rgb(255, 255, 255);
   margin-top: -20px;
@@ -303,4 +401,8 @@ body {
 
 .answer{
   color: white;
+}
+
+.home-center{
+  margin: 110px;
 }

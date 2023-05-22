@@ -1,8 +1,8 @@
-{% macro nutritionContainer2(display_name, songs, id, duration) -%}
-    <div class="nutritionContainer2" id="{{ id }}">
-      {% if songs %}
+{% macro nutritionContainer3(display_name, artist, id, duration) -%}
+    <div class="nutritionContainer3" id="{{ id }}">
+      {% if artist %}
       <div class="topWords">
-        <section class="performance-facts2">
+        <section class="performance-facts3">
           <header class="performance-facts__header">
             <h1 class="performance-facts__title">Spotify Nutrition</h1>
             <hr class="title-line" />
@@ -29,52 +29,36 @@
     
               <tr class="Total-Word-Count">
                 <th colspan="2">
-                  <b>Songs</b>
+                  <b>Total Artists</b>
                 </th>
     
-                <td><b>453</b></td>
+                <td><b>69</b></td>
               </tr>
               <tr class="thick-row">
                 <td colspan="3" class="small-info">
-                  * relative song % 
+                  * relative listening % 
                 </td>
               </tr>
               <tr>
                 <th colspan="2">
-                  <b>{{ (songs[0]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ (songs[0]['artists'][0]['name']) }}
+                  <b>{{ (artist[0]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{bru  }}
                 </th>
                 <td>
-                  <b>17%</b>
+                  <b>1%</b>
                 </td>
     
               </tr>
               <tr>
                 <td class="blank-cell"></td>
-                <th>{{ (songs[1]['name']) }}&nbsp;&nbsp;&nbsp; {{ (songs[1]['artists'][0]['name']) }}</th>
+                <th>{{ (artist[1]['name']) }}&nbsp;&nbsp;&nbsp; {{ bru }}</th>
                 <td>
-                  <b>13%</b>
+                  <b>2%</b>
                 </td>
               </tr>
               <tr>
                 <td class="blank-cell"></td>
                 <th>
-                  <i>{{ (songs[2]['name']) }}</i>&nbsp;&nbsp;&nbsp;{{ (songs[2]['artists'][0]['name']) }}
-                </th>
-                <td>
-                  <b>9%</b>
-                </td>
-              </tr>
-              <tr>
-                <th colspan="2">
-                  <b>{{ (songs[3]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ (songs[3]['artists'][0]['name']) }}
-                </th>
-                <td>
-                  <b>4%</b>
-                </td>
-              </tr>
-              <tr>
-                <th colspan="2">
-                  <b>{{ (songs[4]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ (songs[4]['artists'][0]['name']) }}
+                  <i>{{ (artist[2]['name']) }}</i>&nbsp;&nbsp;&nbsp;{{ bru }}
                 </th>
                 <td>
                   <b>3%</b>
@@ -82,17 +66,33 @@
               </tr>
               <tr>
                 <th colspan="2">
-                  <b>{{ (songs[5]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ (songs[5]['artists'][0]['name']) }}
+                  <b>{{ (artist[3]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ bru }}
                 </th>
                 <td>
-                  <b>1.2%</b>
+                  <b>4%</b>
+                </td>
+              </tr>
+              <tr>
+                <th colspan="2">
+                  <b>{{ (artist[4]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ bru }}
+                </th>
+                <td>
+                  <b>5%</b>
+                </td>
+              </tr>
+              <tr>
+                <th colspan="2">
+                  <b>{{ (artist[5]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ bru }}
+                </th>
+                <td>
+                  <b>6%</b>
                 </td>
               </tr>
               <tr class="thick-end">
                 <th colspan="2">
-                  <b>{{ (songs[6]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ (songs[6]['artists'][0]['name']) }}
+                  <b>{{ (artist[6]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ bru }}
                 </th>
-                <td><b>.6%</b></td>
+                <td><b>7%</b></td>
               </tr>
             </tbody>
           </table>

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +8,7 @@
 }
 
 body {
-  background: #121212;
+  background: #1f1f1f;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -16,14 +17,14 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #272727;
+  background-color: transparent;
   display: flex;
   justify-content: flex-end;
   padding: 20px;
 }
 
 .navMenu a {
-  color: #b3b3b3;
+  color: white;
   text-decoration: none;
   font-size: 1.4em;
   text-transform: uppercase;
@@ -31,6 +32,7 @@ body {
   margin-right: 40px;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
+  position: relative;
 }
 
 /* Add margin or padding to the elements below the navigation bar */
@@ -38,51 +40,34 @@ body {
   margin-top: 80px; /* Adjust the value as needed */
 }
 
-/* Rest of the CSS rules for the navigation menu */
-.navMenu a:hover {
-  color: #1db954;
-}
-
-.navMenu .dot {
-  width: 6px;
-  height: 6px;
-  background: #fddb3a;
+.circleBehind a:before,
+.circleBehind a:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  border: 4px solid #0d5024;
+  transform: translate(-50%, -50%) scale(0.8);
   border-radius: 50%;
+  background: transparent;
   opacity: 0;
-  -webkit-transform: translateX(30px);
-  transform: translateX(30px);
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s;
+  z-index: -1;
 }
 
-.navMenu a:nth-child(1):hover ~ .dot {
-  -webkit-transform: translateX(30px);
-  transform: translateX(30px);
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-  opacity: 1;
+.circleBehind a:after {
+  border-width: 2px;
+  transition: all 0.4s;
 }
 
-.navMenu a:nth-child(2):hover ~ .dot {
-  -webkit-transform: translateX(110px);
-  transform: translateX(110px);
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+.circleBehind a:hover:before {
   opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
-.navMenu a:nth-child(3):hover ~ .dot {
-  -webkit-transform: translateX(200px);
-  transform: translateX(200px);
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+.circleBehind a:hover:after {
   opacity: 1;
-}
-
-.navMenu a:nth-child(4):hover ~ .dot {
-  -webkit-transform: translateX(285px);
-  transform: translateX(285px);
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.3);
 }
