@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ title }}</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='navbar.css') }}"
+    />
+  </head>
+  <body>
+        {% include 'navbar.html' %}
+    <div class="container">
+        <h1 class="logo">Privacy Policy</h1>
+      <p class="home-text">
+        By using the Spotify Nutrition app, you acknowledge that it utilizes the
+        open-source Spotify Web API. In order to provide the service, your
+        Spotify account username and data related to your top artists and tracks
+        may be accessed. It is important to note that Spotify Nutrition does not
+        store or collect any of the data used during its operation. Furthermore,
+        no information is shared with third parties. All data is exclusively
+        utilized for the purpose of generating and displaying your personalized
+        Nutrition Label.
+      </p>
+    </div>
+  </body>
+</html>

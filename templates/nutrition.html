@@ -6,10 +6,15 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
     />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='navbar.css') }}"
+    />
     <title>{{ title }}</title>
   </head>
 
   <body>
+    {% include 'navbar.html' %}
     {% from "nutritionContainer.html" import nutritionContainer with context %}
 
     <script>

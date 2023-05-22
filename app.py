@@ -37,10 +37,22 @@ genius = lyricsgenius.Genius(GENIUS_KEY)
 
 
 @app.route('/')
-def index():
+@app.route('/home')
+def home():
     name = 'username'
-    return render_template('index.html', title='Welcome', username=name)
+    return render_template('home.html', title='Welcome', username=name)
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 @app.route('/login')
 def login():
@@ -74,6 +86,16 @@ def get_token():
 def chooseLabel():
     choose = "bruh"
     return render_template('chooseLabel.html')
+
+@app.route('/artistLabel')
+def artistLabel():
+    choose = "bruh"
+    return render_template('artistLabel.html')
+
+@app.route('/songLabel')
+def songLabel():
+    choose = "bruh"
+    return render_template('songLabel.html')
 
 
 @app.template_filter('word_count')
@@ -129,17 +151,17 @@ def wordLabel():
 
 
     short_term = sp.current_user_top_tracks(
-        limit=15,
+        limit=1,
         offset=0,
         time_range=SHORT_TERM,
     )
     medium_term = sp.current_user_top_tracks(
-        limit=30,
+        limit=0,
         offset=0,
         time_range=MEDIUM_TERM,
     )
     long_term = sp.current_user_top_tracks(
-        limit=45,
+        limit=0,
         offset=0,
         time_range=LONG_TERM,
     )
