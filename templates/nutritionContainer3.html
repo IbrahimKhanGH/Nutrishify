@@ -29,19 +29,19 @@
     
               <tr class="Total-Word-Count">
                 <th colspan="2">
-                  <b>Total Artists</b>
+                  <b>Artists</b>
                 </th>
     
-                <td><b>69</b></td>
+                <td><b>7</b></td>
               </tr>
               <tr class="thick-row">
                 <td colspan="3" class="small-info">
-                  * relative listening % 
+                  * relative listening rank % 
                 </td>
               </tr>
               <tr>
                 <th colspan="2">
-                  <b>{{ (artist[0]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{bru  }}
+                  <b>{{ (artist[0]['name']) }}</b> <i class="genre"> &nbsp;&nbsp;&nbsp;{{ artist[0]['genres'][0] }}</i> 
                 </th>
                 <td>
                   <b>1%</b>
@@ -50,7 +50,7 @@
               </tr>
               <tr>
                 <td class="blank-cell"></td>
-                <th>{{ (artist[1]['name']) }}&nbsp;&nbsp;&nbsp; {{ bru }}</th>
+                <th>{{ (artist[1]['name']) }}&nbsp;&nbsp;&nbsp; {{ artist[1]['genres'][0] }} </th>
                 <td>
                   <b>2%</b>
                 </td>
@@ -58,7 +58,7 @@
               <tr>
                 <td class="blank-cell"></td>
                 <th>
-                  <i>{{ (artist[2]['name']) }}</i>&nbsp;&nbsp;&nbsp;{{ bru }}
+                  <i>{{ (artist[2]['name']) }}</i>&nbsp;&nbsp;&nbsp;{{ artist[2]['genres'][0] }}
                 </th>
                 <td>
                   <b>3%</b>
@@ -66,7 +66,7 @@
               </tr>
               <tr>
                 <th colspan="2">
-                  <b>{{ (artist[3]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ bru }}
+                  <b>{{ (artist[3]['name']) }}</b> &nbsp;&nbsp;&nbsp;{{ artist[3]['genres'][0] }} 
                 </th>
                 <td>
                   <b>4%</b>
@@ -74,7 +74,7 @@
               </tr>
               <tr>
                 <th colspan="2">
-                  <b>{{ (artist[4]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ bru }}
+                  <b>{{ (artist[4]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ artist[4]['genres'][0] }} 
                 </th>
                 <td>
                   <b>5%</b>
@@ -82,7 +82,7 @@
               </tr>
               <tr>
                 <th colspan="2">
-                  <b>{{ (artist[5]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ bru }}
+                  <b>{{ (artist[5]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ artist[5]['genres'][0] }} 
                 </th>
                 <td>
                   <b>6%</b>
@@ -90,7 +90,7 @@
               </tr>
               <tr class="thick-end">
                 <th colspan="2">
-                  <b>{{ (artist[6]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ bru }}
+                  <b>{{ (artist[6]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ artist[6]['genres'][0] }} 
                 </th>
                 <td><b>7%</b></td>
               </tr>

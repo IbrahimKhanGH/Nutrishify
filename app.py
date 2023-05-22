@@ -12,7 +12,6 @@ import concurrent.futures
 from flask import jsonify
 from stop_words import stop_words_list
 
-
 # Defining consts
 TOKEN_CODE = "token_info"
 MEDIUM_TERM = "medium_term"
@@ -34,6 +33,9 @@ app.secret_key = SECRET_KEY
 app.config['SESSION_COOKIE_NAME'] = 'Eriks Cookie'
 
 genius = lyricsgenius.Genius(GENIUS_KEY)
+
+
+
 
 
 @app.route('/')
@@ -85,7 +87,7 @@ def get_token():
 @app.route('/chooseLabel')
 def chooseLabel():
     return render_template('chooseLabel.html')
-
+    
 @app.route('/artistLabel')
 def artistLabel():
     try:
@@ -100,24 +102,60 @@ def artistLabel():
     current_user_name = sp.current_user()['display_name']
 
     short_term = sp.current_user_top_artists(
-        limit=15,
+        limit=7,
         offset=0,
         time_range=SHORT_TERM,
     )
     medium_term = sp.current_user_top_artists(
-        limit=30,
+        limit=7,
         offset=0,
         time_range=MEDIUM_TERM,
     )
     long_term = sp.current_user_top_artists(
-        limit=45,
+        limit=7,
         offset=0,
         time_range=LONG_TERM,
     )
 
+    limit = request.args.get('limit', default=50, type=int)
+    offset = request.args.get('offset', default=0, type=int)
+    market = request.args.get('market', default=None, type=str)
+
+    tracks = []
+    total = limit  # Initial value to enter the loop
+
+    
+    # while len(tracks) < total:
+    #     results = sp.current_user_saved_tracks(limit=limit, offset=offset, market=market)
+    #     tracks.extend(results['items'])
+    #     total = results['total']
+    #     offset += limit
+
+    # artist_counts = {}
+    # total_tracks = len(tracks)
+
+    # for track in tracks:
+    #     artists = track['track']['artists']
+    #     for artist in artists:
+    #         artist_id = artist['id']
+    #         if artist_id in artist_counts:
+    #             artist_counts[artist_id] += 1
+    #         else:
+    #             artist_counts[artist_id] = 1
+
+    # artist_percentages = {}
+
+    # for artist in short_term['items'] + medium_term['items'] + long_term['items']:
+    #     artist_id = artist['id']
+    #     if artist_id in artist_counts:
+    #         percentage = (artist_counts[artist_id] / total_tracks) * 100
+    #         artist_percentages[artist_id] = percentage
+
     return render_template('nutrition3.html', user_display_name=current_user_name,
                            short_term=short_term, medium_term=medium_term,
-                           long_term=long_term)
+                           long_term=long_term, #artist_percentages=artist_percentages, 
+                           limit=limit)
+
 
 
 
@@ -339,3 +377,4 @@ def _jinja2_filter_miliseconds(time, fmt=None):
     if seconds < 10:
         return str(minutes) + ":0" + str(seconds)
     return str(minutes) + ":" + str(seconds)
+

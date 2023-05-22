@@ -406,3 +406,61 @@ button.animated-button.spotify-button:before {
 .home-center{
   margin: 110px;
 }
+
+.footer {
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+}
+
+.footer a {
+  text-decoration: underline;
+  text-decoration-color: #1db954; 
+  color: #1db954; 
+}
+
+.routing {
+  text-align: center;
+}
+
+.routing li {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.routing li a {
+  text-decoration: none;
+  text-decoration-color: #1db954; 
+  color: #1db954; 
+}
+
+.routing li::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 8px;
+  background-color: gray; 
+  top: 50%;
+  right: -6px;
+  transform: translateY(-50%);
+}
+
+.routing li:last-child::after {
+  display: none; /* Hide the line after the last item */
+}
+
+.genre{
+  font: 5px !important;
+}
+
+.material-icons {
+  color: #888;
+  transition: color 0.3s ease;
+  
+}
+
+/* Hover styles */
+.material-icons:hover {
+  color: #1db954;
+}

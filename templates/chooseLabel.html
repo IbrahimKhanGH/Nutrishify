@@ -20,15 +20,16 @@
     {% include 'navbar.html' %}
     <div class="container">
       <h1 class="logo">Choose Your Spotify Nutrition Label</h1>
-      <button class="animated-button spotify-button" onclick="window.location.href='/wordLabel'">
-        Top Words
-      </button>
       <button class="animated-button spotify-button" onclick="window.location.href='/artistLabel'">
         Top Artists
       </button>
       <button class="animated-button spotify-button" onclick="window.location.href='/songLabel'">
         Top Songs
       </button>
+      <button class="animated-button spotify-button" onclick="window.location.href='/wordLabel'">
+        Top Words
+      </button>
     </div>
   </body>
+  {% include 'footer.html' %}
 </html>
