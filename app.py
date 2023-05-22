@@ -94,8 +94,37 @@ def artistLabel():
 
 @app.route('/songLabel')
 def songLabel():
-    choose = "bruh"
-    return render_template('songLabel.html')
+    try:
+        token_info = get_token()
+    except:
+        print("user not logged in")
+        return redirect("/")
+    sp = spotipy.Spotify(
+        auth=token_info['access_token'],
+    )
+
+    current_user_name = sp.current_user()['display_name']
+
+
+    short_term = sp.current_user_top_tracks(
+        limit=15,
+        offset=0,
+        time_range=SHORT_TERM,
+    )
+    medium_term = sp.current_user_top_tracks(
+        limit=30,
+        offset=0,
+        time_range=MEDIUM_TERM,
+    )
+    long_term = sp.current_user_top_tracks(
+        limit=45,
+        offset=0,
+        time_range=LONG_TERM,
+    )
+    
+    return render_template('nutrition2.html',user_display_name=current_user_name, short_term=short_term, medium_term=medium_term, long_term=long_term, current_user_name=current_user_name)
+
+    
 
 
 @app.template_filter('word_count')
@@ -151,17 +180,17 @@ def wordLabel():
 
 
     short_term = sp.current_user_top_tracks(
-        limit=1,
+        limit=15,
         offset=0,
         time_range=SHORT_TERM,
     )
     medium_term = sp.current_user_top_tracks(
-        limit=0,
+        limit=30,
         offset=0,
         time_range=MEDIUM_TERM,
     )
     long_term = sp.current_user_top_tracks(
-        limit=0,
+        limit=45,
         offset=0,
         time_range=LONG_TERM,
     )

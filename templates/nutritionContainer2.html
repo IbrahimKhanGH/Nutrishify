@@ -1,0 +1,144 @@
+{% macro nutritionContainer2(display_name, songs, id, duration) -%}
+    <div class="nutritionContainer" id="{{ id }}">
+      {% if songs %}
+      <div class="topWords">
+        <section class="performance-facts">
+          <header class="performance-facts__header">
+            <h1 class="performance-facts__title">Spotify Nutrition</h1>
+            <hr class="title-line" />
+            <tr class="serving-size">
+              <table class="performance-facts__table">
+    
+                <tr class="serving-size">
+    
+                  <th colspan="2">
+                    <b>Serving Size</b>
+                  </th>
+    
+                  <td class="duration-cell">
+                    <b>{{ duration }}</b>
+                  </td>
+    
+                </tr>
+              </table>
+            </tr>
+          </header>
+    
+          <table class="performance-facts__table">
+            <tbody>
+    
+              <tr class="Total-Word-Count">
+                <th colspan="2">
+                  <b>Words</b>
+                </th>
+    
+                <td><b></b></td>
+              </tr>
+              <tr class="thick-row">
+                <td colspan="3" class="small-info">
+                  * relative word % 
+                </td>
+              </tr>
+              <tr>
+                <th colspan="2">
+                  <b>{{ (songs[0]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ (songs[1]['artists'][0]['name']) }}
+                </th>
+                <td>
+                  <b></b>
+                </td>
+    
+              </tr>
+              <tr>
+                <td class="blank-cell"></td>
+                <th>{{ (songs[1]['name']) }}&nbsp;&nbsp;&nbsp;- {{ (songs[1]['artists'][0]['name']) }}</th>
+                <td>
+                  <b></b>
+                </td>
+              </tr>
+              <tr>
+                <td class="blank-cell"></td>
+                <th>
+                  <i>{{ (songs[2]['name']) }}</i>&nbsp;&nbsp;&nbsp;{{ (songs[2]['artists'][0]['name']) }}
+                </th>
+                <td>
+                  <b></b>
+                </td>
+              </tr>
+              <tr>
+                <th colspan="2">
+                  <b>{{ (songs[3]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ (songs[3]['artists'][0]['name']) }}
+                </th>
+                <td>
+                  <b></b>
+                </td>
+              </tr>
+              <tr>
+                <th colspan="2">
+                  <b>{{ (songs[4]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ (songs[4]['artists'][0]['name']) }}
+                </th>
+                <td>
+                  <b></b>
+                </td>
+              </tr>
+              <tr>
+                <th colspan="2">
+                  <b>{{ (songs[5]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ (songs[5]['artists'][0]['name']) }}
+                </th>
+                <td>
+                  <b></b>
+                </td>
+              </tr>
+              <tr class="thick-end">
+                <th colspan="2">
+                  <b>{{ (songs[6]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ (songs[6]['artists'][0]['name']) }}
+                </th>
+                <td><b></b></td>
+              </tr>
+            </tbody>
+          </table>
+    
+          <table class="performance-facts__table">
+            <tbody>
+    
+              <tr class="thin-end">
+                <td colspan="2"> <b>User</b> </td>     <td>{{ display_name }} </td>
+              </tr>
+    
+              <tr class="thin-end">
+    
+                <td colspan="2"><b>Date</b></td>
+    
+                <td>
+    
+                  <script>
+                    var currentDate = new Date();
+                    var options = { month: 'short', day: 'numeric', year: 'numeric' };
+                    var dateString = currentDate.toLocaleDateString(undefined, options);
+              
+                    document.write(dateString);
+                  </script>
+                  
+                </td>
+              </tr>
+             
+              <tr class="thin-end">
+                <td colspan="2"><b>Design by</b></td>        <td>@lbraah</td>
+              </tr>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p class="small-info">
+            * Created by Ibrahim Khan and inspired by @albulmnutrition on instagram
+          </p> 
+    
+          <p class="small-info">
+            * SpotifyNutrition.com
+          </p>
+    
+        </section>
+      </div>
+      {% endif %}
+    </div>
+    {%- endmacro %}
+    

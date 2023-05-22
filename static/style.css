@@ -275,13 +275,8 @@ body {
   border-radius: 10px;
   color: rgb(255, 255, 255);
   font-family: "Helvetica Neue", Helvetica, Geneva, Tahoma, sans-serif;
-  margin: 40px;
-  width: auto;
+  margin: 30px;
   white-space: nowrap;
-   /* Center the button */
-   display: flex;
-   justify-content: center; /* Horizontally center the button */
-   align-items: center; /* Vertically center the button */
 }
 
 
@@ -295,8 +290,17 @@ body {
 
 .subtitle{
   font-family: "Helvetica Neue", Helvetica, sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 1rem;
   text-align: center;
   color: rgb(255, 255, 255);
+  margin-top: -20px;
+}
+
+.question{
+  color: rgb(255, 255, 255) !important; 
+}
+
+.answer{
+  color: white;
 }

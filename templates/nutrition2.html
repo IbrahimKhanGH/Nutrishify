@@ -15,7 +15,7 @@
 
   <body>
     {% include 'navbar.html' %}
-    {% from "nutritionContainer.html" import nutritionContainer with context %}
+    {% from "nutritionContainer2.html" import nutritionContainer2 with context %}
 
     <script>
       var activeLabel;
@@ -24,10 +24,10 @@
         // set all of the other ones to invisible
         for (
           let i = 0;
-          i < document.querySelectorAll(".nutritionContainer").length;
+          i < document.querySelectorAll(".nutritionContainer2").length;
           i++
         ) {
-          document.querySelectorAll(".nutritionContainer")[i].style.display =
+          document.querySelectorAll(".nutritionContainer2")[i].style.display =
             "none";
         }
         document.getElementById(id).style.display = "inline-block";
@@ -56,13 +56,13 @@
 
       $(document).ready(function () {
         // Global variable
-        var element = $(".nutritionContainerWrapper");
+        var element = $(".nutritionContainer2Wrapper");
 
         // Global variable
         var getCanvas;
 
         $("#downloadPicButton").on("click", function () {
-          var offScreen = document.querySelector(".nutritionContainerWrapper");
+          var offScreen = document.querySelector(".nutritionContainer2Wrapper");
           window.scrollTo(0, 0);
           var clone = hiddenClone(offScreen);
           // Use clone with htm2canvas and delete clone
@@ -124,16 +124,14 @@
       </center>
     </div>
 
-    <div style="width: 100%; height: auto" class="nutritionContainerWrapper">
+    <div style="width: 100%; height: auto" class="nutritionContainer2Wrapper">
       <center>
-        {{ nutritionContainer(user_display_name, short_term['items'],
-        'short_term_label', 'Last Month', short_term_lyrics,
-        short_term_top_words) }} {{ nutritionContainer(user_display_name,
-        medium_term['items'], 'medium_term_label', 'Last 6 Months',
-        medium_term_lyrics, medium_term_top_words) }} {{
-        nutritionContainer(user_display_name, long_term['items'],
-        'long_term_label', 'All Time', long_term_lyrics, long_term_top_words)
-        }}
+
+        {{ nutritionContainer2(user_display_name, short_term['items'], 'short_term_label', 'Last Month') }},
+
+        {{ nutritionContainer2(user_display_name, medium_term['items'], 'medium_term_label', 'Last 6 Months') }},
+
+        {{ nutritionContainer2(user_display_name, long_term['items'], 'long_term_label', 'All Time') }}
       </center>
     </div>
 
