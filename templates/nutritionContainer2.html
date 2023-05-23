@@ -131,7 +131,7 @@
           </table>
 
           <p class='small-info'>
-            * Your top song, {{ songs[0]['name'] }} by {{ (songs[0]['artists'][0]['name']) }}, has a popularity of {{ songs[0]['popularity'] }}.
+            * Your top song, {{ songs[0]['name'] }} by {{ (songs[0]['artists'][0]['name']) }}, has a popularity rating of {{ songs[0]['popularity'] }}/100.
             {% if songs[0]['popularity'] >= 0 and songs[0]['popularity'] <= 20 %}
             It's a hidden gem, loved by a dedicated group of fans.
             {% elif songs[0]['popularity'] >= 21 and songs[0]['popularity'] <= 40 %}

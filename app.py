@@ -131,8 +131,6 @@ def artistLabel():
                            limit=limit)
 
 
-
-
 @app.route('/songLabel')
 def songLabel():
     try:

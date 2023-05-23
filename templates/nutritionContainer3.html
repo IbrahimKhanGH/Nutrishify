@@ -36,7 +36,7 @@
               </tr>
               <tr class="thick-row">
                 <td colspan="3" class="small-info">
-                  * listening rank %  
+                  * artist rank %  
                 </td>
               </tr>
               <tr>
@@ -130,8 +130,8 @@
           </table>
           
           
-          <p class='small-info'>
-            * Your top artist, {{ artist[0]['name'] }}, has a popularity of {{ artist[0]['popularity'] }}.
+          <p class='small-info download-text'>
+            * Your top artist, {{ artist[0]['name'] }}, has a popularity rating of {{ artist[0]['popularity'] }}/100.
             {% if artist[0]['popularity'] >= 0 and artist[0]['popularity'] <= 20 %}
               They're a hidden gem, loved by a dedicated group of fans.
             {% elif artist[0]['popularity'] >= 21 and artist[0]['popularity'] <= 40 %}
@@ -144,10 +144,12 @@
               They're a chart-topper, widely recognized and loved by music enthusiasts.
             {% endif %}
           </p>
-            
-          <p class="small-info">
-            * Generated With <b class="link">SpotifyNutrition.com </b>
+          
+          <p class="small-info download-text">
+            * Generated With <span class="link">SpotifyNutrition.com</span>
           </p>
+          
+          
     
         </section>
       </div>

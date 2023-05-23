@@ -57,28 +57,28 @@
         }
       
         $(document).ready(function () {
-          // Global variable
-          var element = $(".nutritionContainer2Wrapper");
-      
-          // Global variable
-          var getCanvas;
-      
-          $("#downloadPicButton").on("click", function () {
-            var offScreen = document.querySelector(".nutritionContainer2Wrapper");
-            window.scrollTo(0, 0);
-            var clone = hiddenClone(offScreen);
-            // Use clone with html2canvas and delete clone
-            html2canvas(clone, { scrollY: -window.scrollY }).then((canvas) => {
-              var dataURL = canvas.toDataURL("image/png", 1.0);
-              document.body.removeChild(clone);
-              var link = document.createElement("a");
-              link.href = dataURL;
-              link.download = `${activeLabel}.png`;
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-            });
-          });
+  // Global variable
+  var element = $(".nutritionContainer2Wrapper");
+
+  // Global variable
+  var getCanvas;
+
+  $("#downloadPicButton").on("click", function () {
+    var offScreen = document.querySelector(".nutritionContainer2Wrapper");
+    window.scrollTo(0, 0);
+    var clone = hiddenClone(offScreen);
+    // Use clone with html2canvas and delete clone
+    html2canvas(clone, { scrollY: -window.scrollY, dpi: 300 }).then((canvas) => {
+      var dataURL = canvas.toDataURL("image/jpeg", 1.0);
+      document.body.removeChild(clone);
+      var link = document.createElement("a");
+      link.href = dataURL;
+      link.download = `${activeLabel}.jpeg`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  });
       
           
       

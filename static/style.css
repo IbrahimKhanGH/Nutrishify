@@ -47,7 +47,7 @@
 p,
 table,
 .date {
-  font-family: "receipt", "Courier New", Courier, monospace;
+  font-family: "Montserrat", sans-serif;
 }
 
 td {
@@ -98,7 +98,7 @@ table {
 }
 
 .image {
-  width: 250px;
+  width: 100px;
   float: left;
   margin: 20px;
 }
@@ -177,10 +177,14 @@ table {
 }
 
 .small-info {
-  font-size: .9rem;
+  font-size: 0.9rem;
   margin-top: 7px;
   margin-bottom: 12px;
   padding: 0;
+}
+
+.download-text {
+  word-spacing: -0.05em; /* Adjust the value as needed */
 }
 
 .performance-facts__table--small {
