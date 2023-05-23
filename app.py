@@ -124,32 +124,6 @@ def artistLabel():
     tracks = []
     total = limit  # Initial value to enter the loop
 
-    
-    # while len(tracks) < total:
-    #     results = sp.current_user_saved_tracks(limit=limit, offset=offset, market=market)
-    #     tracks.extend(results['items'])
-    #     total = results['total']
-    #     offset += limit
-
-    # artist_counts = {}
-    # total_tracks = len(tracks)
-
-    # for track in tracks:
-    #     artists = track['track']['artists']
-    #     for artist in artists:
-    #         artist_id = artist['id']
-    #         if artist_id in artist_counts:
-    #             artist_counts[artist_id] += 1
-    #         else:
-    #             artist_counts[artist_id] = 1
-
-    # artist_percentages = {}
-
-    # for artist in short_term['items'] + medium_term['items'] + long_term['items']:
-    #     artist_id = artist['id']
-    #     if artist_id in artist_counts:
-    #         percentage = (artist_counts[artist_id] / total_tracks) * 100
-    #         artist_percentages[artist_id] = percentage
 
     return render_template('nutrition3.html', user_display_name=current_user_name,
                            short_term=short_term, medium_term=medium_term,

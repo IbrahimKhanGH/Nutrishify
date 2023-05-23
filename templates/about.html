@@ -21,7 +21,10 @@
     <div class="container">
       <h1 class="logo">About Spotify Nutrition</h1>
       <p class="home-text">
-        Inspired by @albumnutrition, Spotify Nutrition is
+        Inspired by 
+        <a href="https://www.instagram.com/albumnutrition/">@albumnutrition </a> and 
+        <a href="https://receiptify.herokuapp.com/">receiptify</a>, 
+        Spotify Nutrition is
         a tool that presents a user's top most listend to words/artists/songs from the last
         month, last 6 months, and all time, arranged in a nutrition label-like
         format. 
@@ -29,8 +32,27 @@
        <h1 class="logo">FAQ</h1>
        <p class="home-text">
         <h3 class="question">How Does it Work?</h3>
-        <p class ="answer">let him cook </p>
-      </p>
+        <p class ="answer">Spotify Nutrition utilizes the Spotify API to retrieve your listening history and identify your top songs and artists based on play counts. It then integrates the Genius API to, utilizing data from the Spotify API to retrieve the lyrics of your top songs. The lyrics are analyzed to identify the most frequently used words, filtering out common filler words such as "I," "me," "you," etc. The result is a list of the top words associated with your listening history, providing insights into the themes and vocabulary of your favorite songs. Please note that Spotify Nutrition does not store any personal data or listening history. </p>
+        <h3 class="question">Does Spotify Nutrition support multiple languages for song lyrics analysis?</h3>
+        <p class = "answer">Currently, Spotify Nutrition primarily focuses on analyzing song lyrics in English. This ensures accurate counting and analysis of English words. However, we understand the importance of supporting multiple languages for a comprehensive music analysis experience. In the future, we are actively working on integrating other languages to broaden the scope of lyrics analysis and provide accurate word counts for songs in different languages. We appreciate your understanding and patience as we continue to develop and expand the language support of Spotify Nutrition. </p>
+        <h3 class="question">How frequently is the data updated on Spotify Nutrition?</h3>
+        <p class = "answer">The data on Spotify Nutrition is retrieved from the Spotify API, which provides the most updated information available at the time of retrieval. While it may not be real-time in the sense of immediate updates as soon as a change occurs in your listening history, it does provide the most recent data accessible through the Spotify API. The frequency of updates to your listening history and other data on Spotify Nutrition depends on how frequently the Spotify API updates its information. Therefore, the data you receive from Spotify Nutrition represents the most up-to-date information provided by the Spotify API.</p>
+        <h3 class="question">Why does the Top Words analysis take longer to generate?</h3>
+        <p class = "answer">The Top Words analysis feature involves going through thousands of lyrics from your favorite songs and counting the occurrences of each word. This process requires extensive computation and analysis, which can take some time to complete. The larger your listening history and the more diverse your music taste, the more lyrics need to be processed, resulting in longer processing times. Rest assured that we're continuously optimizing the performance to provide faster results without compromising accuracy.</p>
+        <h3 class="question">How are the Top Words calculated?        </h3>
+        <p class = "answer">The Top Words feature in Spotify Nutrition involves several steps to generate the results. Firstly, it utilizes the Spotify API to retrieve your top songs and artists based on the specified time period. For example, it may gather your top 50 songs from the past month, past 6 months, or all-time.
+
+            Once the top songs are obtained, Spotify Nutrition leverages the Genius API to fetch the lyrics for each song. This step enables the analysis of the lyrical content to identify significant words and their frequencies. The lyrics are then processed to filter out common filler words such as "I," "me," "you," and other similar terms. This filtering helps focus on the most meaningful words in the lyrics.
+            
+            After filtering, the occurrence of each word is counted and analyzed. The words with the highest frequency are determined as the "Top Words" in your listening history. Additionally, Spotify Nutrition calculates the percentage of occurrence for each word, providing insights into the relative prominence of different words in your top songs.
+            
+            It's worth noting that the process of analyzing and calculating the Top Words involves going through thousands of lyrics and performing computations. Therefore, the processing time may vary depending on the size of your music library and the number of songs being analyzed. However, Spotify Nutrition aims to optimize performance while delivering accurate and insightful results based on your music preferences.
+            
+            
+            
+            
+            </p>
+        </p>
     </div>
   </body>
   {% include 'footer.html' %}

@@ -12,99 +12,121 @@
     />
     <title>{{ title }}</title>
   </head>
-
   <body>
     {% include 'navbar.html' %}
     {% from "nutritionContainer.html" import nutritionContainer with context %}
 
-    <script>
-      var activeLabel;
+  <script>
+    var activeLabel;
+  
+    function showContent(id) {
+// Hide all the nutrition containers
+var nutritionContainers = document.querySelectorAll(".nutritionContainer");
+nutritionContainers.forEach(function (container) {
+container.style.display = "none";
+});
 
-      function showContent(id) {
-        // set all of the other ones to invisible
-        for (
-          let i = 0;
-          i < document.querySelectorAll(".nutritionContainer").length;
-          i++
-        ) {
-          document.querySelectorAll(".nutritionContainer")[i].style.display =
-            "none";
-        }
-        document.getElementById(id).style.display = "inline-block";
-        document.getElementById("downloadPicButton").style.display =
-          "inline-block";
-        activeLabel = id;
+// Show the selected nutrition container
+var selectedContainer = document.getElementById(id);
+selectedContainer.style.display = "inline-block";
 
-        // Fetch and update the top songs based on the selected time range
-        getTopSongs(id);
-      }
+// Hide the download button if no container is selected
+var downloadButton = document.getElementById("downloadPicButton");
+downloadButton.style.display = selectedContainer ? "inline-block" : "none";
 
-      function hiddenClone(element) {
-        // Create clone of element
-        var clone = element.cloneNode(true);
+// Fetch and update the top songs based on the selected time range
+getTopSongs(id);
+}
 
-        // Position element relatively within the
-        // body but still out of the viewport
-        var style = clone.style;
-        style.position = "relative";
-        style.top = window.innerHeight + "px";
-        style.left = 0;
-        // Append clone to body and return the clone
-        document.body.appendChild(clone);
-        return clone;
-      }
-
-      $(document).ready(function () {
-        // Global variable
-        var element = $(".nutritionContainerWrapper");
-
-        // Global variable
-        var getCanvas;
-
-        $("#downloadPicButton").on("click", function () {
-          var offScreen = document.querySelector(".nutritionContainerWrapper");
-          window.scrollTo(0, 0);
-          var clone = hiddenClone(offScreen);
-          // Use clone with htm2canvas and delete clone
-          html2canvas(clone, { scrollY: -window.scrollY }).then((canvas) => {
-            var dataURL = canvas.toDataURL("image/png", 1.0);
-            document.body.removeChild(clone);
-            var link = document.createElement("a");
-            link.href = dataURL;
-            link.download = `${activeLabel}.png`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          });
+  
+    function hiddenClone(element) {
+      // Create clone of element
+      var clone = element.cloneNode(true);
+  
+      // Position element relatively within the
+      // body but still out of the viewport
+      var style = clone.style;
+      style.position = "relative";
+      style.top = window.innerHeight + "px";
+      style.left = 0;
+      // Append clone to body and return the clone
+      document.body.appendChild(clone);
+      return clone;
+    }
+  
+    $(document).ready(function () {
+      // Global variable
+      var element = $(".nutritionContainerWrapper");
+  
+      // Global variable
+      var getCanvas;
+  
+      $("#downloadPicButton").on("click", function () {
+        var offScreen = document.querySelector(".nutritionContainerWrapper");
+        window.scrollTo(0, 0);
+        var clone = hiddenClone(offScreen);
+        // Use clone with html2canvas and delete clone
+        html2canvas(clone, { scrollY: -window.scrollY }).then((canvas) => {
+          var dataURL = canvas.toDataURL("image/png", 1.0);
+          document.body.removeChild(clone);
+          var link = document.createElement("a");
+          link.href = dataURL;
+          link.download = `${activeLabel}.png`;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
         });
       });
-
-      function getTopSongs(timeRange) {
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-          if (xhr.readyState === 4 && xhr.status === 200) {
-            var response = JSON.parse(xhr.responseText);
-            // Handle the response, such as updating the UI with the top songs data
-            var topSongsContainer = document.getElementById('topSongsContainer');
-            topSongsContainer.innerHTML = ''; // Clear the container
-            response.topSongs.forEach(function(song) {
-              var listItem = document.createElement('li');
-              listItem.textContent = song.name + ' - ' + song.artist;
-              topSongsContainer.appendChild(listItem);
-            });
-          }
-        };
-        xhr.open('GET', '/getTopSongs?timeRange=' + timeRange);
-        xhr.send();
-      }
-    </script>
+  
+      
+  
+      // Trigger click event for the default button
+      showContent('short_term_label');
+  
+      // Add "clicked" class to the default button
+      var defaultButton = document.getElementById('short_term_label');
+  
+      var buttons = document.querySelectorAll(".generatePicButton");
+  
+      buttons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          // Remove "clicked" class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove("clicked");
+          });
+  
+          // Add "clicked" class to the clicked button
+          this.classList.add("clicked");
+        });
+      });
+    });
+  
+    function getTopSongs(timeRange) {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var response = JSON.parse(xhr.responseText);
+          // Handle the response, such as updating the UI with the top songs data
+          var topSongsContainer = document.getElementById('topSongsContainer');
+          topSongsContainer.innerHTML = ''; // Clear the container
+          response.topSongs.forEach(function (song) {
+            var listItem = document.createElement('li');
+            listItem.textContent = song.name + ' - ' + song.artist;
+            topSongsContainer.appendChild(listItem);
+          });
+        }
+      };
+      xhr.open('GET', '/getTopSongs?timeRange=' + timeRange);
+      xhr.send();
+    }
+  </script>
 
   <div style="width: 100%; height: auto" class="buttons">
     <center>
       <div class="generatePicButtonSection">
         <button
           onclick="showContent('short_term_label')"
-          class="generatePicButton"
+          class="generatePicButton clicked"
         >
           LAST MONTH
         </button>

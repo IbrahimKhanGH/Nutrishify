@@ -8,9 +8,17 @@
 }
 
 body {
-  background: #1f1f1f;
+  background: linear-gradient(to top, #222222, #141414);
   font-family: "Montserrat", sans-serif;
+  margin: 0;
 }
+
+html {
+  min-height: 100vh;
+}
+
+
+
 
 .navMenu {
   position: fixed;

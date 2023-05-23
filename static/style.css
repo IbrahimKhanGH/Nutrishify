@@ -15,13 +15,6 @@
   display: none;
 }
 
-body {
-  font-family: "Montserrat", sans-serif;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: rgb(0, 0, 0);
-  background-color: rgb(189, 46, 46);
-}
 
 .nutritionContainer {
   padding: 0px;
@@ -75,19 +68,26 @@ table {
 }
 
 .generatePicButton {
-  border: none;
+  border: 2px solid #1db954;
   text-align: center;
   text-decoration: none;
   padding: 1vh 3vh;
-  background-color: #1db954;
+  background-color: transparent;
   font-size: 14px;
   cursor: pointer;
   border-radius: 10px;
-  color: white;
+  color: #1db954;
   font-family: "Montserrat", sans-serif;
   width: auto;
   margin: 20px;
 }
+
+.generatePicButton.clicked {
+  background-color: #1db954;
+  color: white;
+}
+
+
 
 .generatePicButtonSection{
   margin: 60px auto 0; 
@@ -177,7 +177,10 @@ table {
 }
 
 .small-info {
-  font-size: 0.8rem;
+  font-size: .9rem;
+  margin-top: 7px;
+  margin-bottom: 12px;
+  padding: 0;
 }
 
 .performance-facts__table--small {
@@ -273,15 +276,6 @@ table {
 }
 
 
-body {
-  color: rgb(0,0,0); /* Use RGB values for a darker color */
-}
-
-body {
-  font-family: "Montserrat", sans-serif;
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
-}
 
 .container {
   max-width: 900px;
@@ -383,7 +377,8 @@ button.animated-button.spotify-button:before {
 
 .home-text{
   color: rgb(209, 206, 206);
-  font-size: large;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .subtitle{
@@ -396,11 +391,13 @@ button.animated-button.spotify-button:before {
 }
 
 .question{
-  color: rgb(255, 255, 255) !important; 
+  color: #1db954 !important; 
+  margin: 20px;
 }
 
 .answer{
   color: white;
+  margin: 10px;
 }
 
 .home-center{
@@ -463,4 +460,31 @@ button.animated-button.spotify-button:before {
 /* Hover styles */
 .material-icons:hover {
   color: #1db954;
+}
+
+.top-songs-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.song-info {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.song-name{
+  font-size: .8rem;
+}
+
+.home-text a{
+  text-decoration: underline;
+  text-decoration-color: #1db954; 
+  color: #1db954; 
+}
+
+.link {
+  font-size: small;
+  font-weight: bold;
+  text-decoration: underline;
 }

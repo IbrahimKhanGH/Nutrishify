@@ -36,12 +36,12 @@
               </tr>
               <tr class="thick-row">
                 <td colspan="3" class="small-info">
-                  * relative listening rank % 
+                  * listening rank %  
                 </td>
               </tr>
               <tr>
                 <th colspan="2">
-                  <b>{{ (artist[0]['name']) }}</b> <i class="genre"> &nbsp;&nbsp;&nbsp;{{ artist[0]['genres'][0] }}</i> 
+                  <b>{{ (artist[0]['name']) }}</b> <i class="genre"> &nbsp;&nbsp;&nbsp;</i> 
                 </th>
                 <td>
                   <b>1%</b>
@@ -50,7 +50,7 @@
               </tr>
               <tr>
                 <td class="blank-cell"></td>
-                <th>{{ (artist[1]['name']) }}&nbsp;&nbsp;&nbsp; {{ artist[1]['genres'][0] }} </th>
+                <th>{{ (artist[1]['name']) }}&nbsp;&nbsp;&nbsp;</th>
                 <td>
                   <b>2%</b>
                 </td>
@@ -58,7 +58,7 @@
               <tr>
                 <td class="blank-cell"></td>
                 <th>
-                  <i>{{ (artist[2]['name']) }}</i>&nbsp;&nbsp;&nbsp;{{ artist[2]['genres'][0] }}
+                  <i>{{ (artist[2]['name']) }}</i>&nbsp;&nbsp;&nbsp;
                 </th>
                 <td>
                   <b>3%</b>
@@ -66,7 +66,7 @@
               </tr>
               <tr>
                 <th colspan="2">
-                  <b>{{ (artist[3]['name']) }}</b> &nbsp;&nbsp;&nbsp;{{ artist[3]['genres'][0] }} 
+                  <b>{{ (artist[3]['name']) }}</b> &nbsp;&nbsp;&nbsp;
                 </th>
                 <td>
                   <b>4%</b>
@@ -74,7 +74,7 @@
               </tr>
               <tr>
                 <th colspan="2">
-                  <b>{{ (artist[4]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ artist[4]['genres'][0] }} 
+                  <b>{{ (artist[4]['name']) }}</b>&nbsp;&nbsp;&nbsp;
                 </th>
                 <td>
                   <b>5%</b>
@@ -82,7 +82,7 @@
               </tr>
               <tr>
                 <th colspan="2">
-                  <b>{{ (artist[5]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ artist[5]['genres'][0] }} 
+                  <b>{{ (artist[5]['name']) }}</b>&nbsp;&nbsp;&nbsp;
                 </th>
                 <td>
                   <b>6%</b>
@@ -90,7 +90,7 @@
               </tr>
               <tr class="thick-end">
                 <th colspan="2">
-                  <b>{{ (artist[6]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ artist[6]['genres'][0] }} 
+                  <b>{{ (artist[6]['name']) }}</b>&nbsp;&nbsp;&nbsp;
                 </th>
                 <td><b>7%</b></td>
               </tr>
@@ -103,7 +103,14 @@
               <tr class="thin-end">
                 <td colspan="2"> <b>User</b> </td>     <td>{{ display_name }} </td>
               </tr>
-    
+              
+            </tr>
+             
+            <tr class="thin-end">
+              <td colspan="2"><b>Top Artist</b></td> <td> {{ (artist[0]['name']) }}</td>
+            </tr>
+            </tr>
+
               <tr class="thin-end">
     
                 <td colspan="2"><b>Date</b></td>
@@ -119,21 +126,27 @@
                   </script>
                   
                 </td>
-              </tr>
-             
-              <tr class="thin-end">
-                <td colspan="2"><b>Design by</b></td>        <td>@lbraah</td>
-              </tr>
-              </tr>
             </tbody>
           </table>
           
+          
+          <p class='small-info'>
+            * Your top artist, {{ artist[0]['name'] }}, has a popularity of {{ artist[0]['popularity'] }}.
+            {% if artist[0]['popularity'] >= 0 and artist[0]['popularity'] <= 20 %}
+              They're a hidden gem, loved by a dedicated group of fans.
+            {% elif artist[0]['popularity'] >= 21 and artist[0]['popularity'] <= 40 %}
+              They're gaining attention and starting to make waves in the music world.
+            {% elif artist[0]['popularity'] >= 41 and artist[0]['popularity'] <= 60 %}
+              They're becoming increasingly popular, with a growing number of listeners.
+            {% elif artist[0]['popularity'] >= 61 and artist[0]['popularity'] <= 80 %}
+              They're quite popular, well-known for their unique style and sound.
+            {% else %}
+              They're a chart-topper, widely recognized and loved by music enthusiasts.
+            {% endif %}
+          </p>
+            
           <p class="small-info">
-            * Created by Ibrahim Khan and inspired by @albulmnutrition on instagram
-          </p> 
-    
-          <p class="small-info">
-            * SpotifyNutrition.com
+            * Generated With <b class="link">SpotifyNutrition.com </b>
           </p>
     
         </section>

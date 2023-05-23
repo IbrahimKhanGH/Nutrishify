@@ -32,67 +32,67 @@
                   <b>Songs</b>
                 </th>
     
-                <td><b>453</b></td>
+                <td><b>7</b></td>
               </tr>
               <tr class="thick-row">
                 <td colspan="3" class="small-info">
-                  * relative song % 
+                  * song rank % 
                 </td>
               </tr>
               <tr>
-                <th colspan="2">
-                  <b>{{ (songs[0]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ (songs[0]['artists'][0]['name']) }}
+                <th class = "song-name" colspan="2">
+                  <b>{{ (songs[0]['name']) }}</b>&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[0]['artists'][0]['name']) }}
                 </th>
                 <td>
-                  <b>17%</b>
+                  <b>1%</b>
                 </td>
     
               </tr>
               <tr>
                 <td class="blank-cell"></td>
-                <th>{{ (songs[1]['name']) }}&nbsp;&nbsp;&nbsp; {{ (songs[1]['artists'][0]['name']) }}</th>
+                <th class = "song-name">{{ (songs[1]['name']) }}&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[1]['artists'][0]['name']) }}</th>
                 <td>
-                  <b>13%</b>
+                  <b>2%</b>
                 </td>
               </tr>
               <tr>
                 <td class="blank-cell"></td>
-                <th>
-                  <i>{{ (songs[2]['name']) }}</i>&nbsp;&nbsp;&nbsp;{{ (songs[2]['artists'][0]['name']) }}
-                </th>
-                <td>
-                  <b>9%</b>
-                </td>
-              </tr>
-              <tr>
-                <th colspan="2">
-                  <b>{{ (songs[3]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ (songs[3]['artists'][0]['name']) }}
-                </th>
-                <td>
-                  <b>4%</b>
-                </td>
-              </tr>
-              <tr>
-                <th colspan="2">
-                  <b>{{ (songs[4]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ (songs[4]['artists'][0]['name']) }}
+                <th class = "song-name">
+                  <i>{{ (songs[2]['name']) }}</i>&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[2]['artists'][0]['name']) }}
                 </th>
                 <td>
                   <b>3%</b>
                 </td>
               </tr>
               <tr>
-                <th colspan="2">
-                  <b>{{ (songs[5]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ (songs[5]['artists'][0]['name']) }}
+                <th class = "song-name" colspan="2">
+                  <b>{{ (songs[3]['name']) }}</b>&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[3]['artists'][0]['name']) }}
                 </th>
                 <td>
-                  <b>1.2%</b>
+                  <b>4%</b>
+                </td>
+              </tr>
+              <tr>
+                <th class = "song-name" colspan="2">
+                  <b>{{ (songs[4]['name']) }}</b>&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[4]['artists'][0]['name']) }}
+                </th>
+                <td>
+                  <b>5%</b>
+                </td>
+              </tr>
+              <tr>
+                <th class = "song-name" colspan="2">
+                  <b>{{ (songs[5]['name']) }}</b>&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[5]['artists'][0]['name']) }}
+                </th>
+                <td>
+                  <b>6%</b>
                 </td>
               </tr>
               <tr class="thick-end">
-                <th colspan="2">
-                  <b>{{ (songs[6]['name']) }}</b>&nbsp;&nbsp;&nbsp;{{ (songs[6]['artists'][0]['name']) }}
+                <th class = "song-name" colspan="2">
+                  <b>{{ (songs[6]['name']) }}</b>&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[6]['artists'][0]['name']) }}
                 </th>
-                <td><b>.6%</b></td>
+                <td><b>7%</b></td>
               </tr>
             </tbody>
           </table>
@@ -103,7 +103,11 @@
               <tr class="thin-end">
                 <td colspan="2"> <b>User</b> </td>     <td>{{ display_name }} </td>
               </tr>
-    
+              
+              <tr class="thin-end">
+                <td colspan="2"><b>Top Song</b></td> <td> {{ (songs[0]['name']) }} - {{ (songs[0]['artists'][0]['name']) }}</td>
+              </tr>
+
               <tr class="thin-end">
     
                 <td colspan="2"><b>Date</b></td>
@@ -121,19 +125,31 @@
                 </td>
               </tr>
              
-              <tr class="thin-end">
-                <td colspan="2"><b>Design by</b></td>        <td>@lbraah</td>
-              </tr>
-              </tr>
+        
+              
             </tbody>
           </table>
+
+          <p class='small-info'>
+            * Your top song, {{ songs[0]['name'] }} by {{ (songs[0]['artists'][0]['name']) }}, has a popularity of {{ songs[0]['popularity'] }}.
+            {% if songs[0]['popularity'] >= 0 and songs[0]['popularity'] <= 20 %}
+            It's a hidden gem, loved by a dedicated group of fans.
+            {% elif songs[0]['popularity'] >= 21 and songs[0]['popularity'] <= 40 %}
+            It's gaining attention and starting to make waves in the music world.
+            {% elif songs[0]['popularity'] >= 41 and songs[0]['popularity'] <= 60 %}
+            It's getting popular, with a growing number of listeners enjoying its catchy beats.
+            {% elif songs[0]['popularity'] >= 61 and songs[0]['popularity'] <= 80 %}
+            It's quite popular, loved by many for its unique style and sound.
+            {% else %}
+            It's a chart-topper, widely recognized and played everywhere.
+            {% endif %}
+          </p>
           
-          <p class="small-info">
-            * Created by Ibrahim Khan and inspired by @albulmnutrition on instagram
-          </p> 
+
+          
     
           <p class="small-info">
-            * SpotifyNutrition.com
+            * Generated With <b class="link">SpotifyNutrition.com </b>
           </p>
     
         </section>
