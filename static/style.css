@@ -417,6 +417,12 @@ button.animated-button.spotify-button:before {
   color: #1db954; 
 }
 
+.footer a:hover{
+  text-decoration: underline;
+  text-decoration-color: #137a37;
+  color: #137a37;
+}
+
 .routing {
   text-align: center;
 }
@@ -481,6 +487,12 @@ button.animated-button.spotify-button:before {
   text-decoration: underline;
   text-decoration-color: #1db954; 
   color: #1db954; 
+}
+
+.home-text a:hover{
+  text-decoration: underline;
+  text-decoration-color: #137a37;
+  color: #137a37;
 }
 
 .link {
