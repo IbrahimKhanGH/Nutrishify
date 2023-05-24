@@ -11,6 +11,8 @@ import os
 import concurrent.futures
 from flask import jsonify
 from stop_words import stop_words_list
+from uuid import uuid4
+
 
 # Defining consts
 TOKEN_CODE = "token_info"
@@ -42,7 +44,7 @@ genius = lyricsgenius.Genius(GENIUS_KEY)
 @app.route('/home')
 def home():
     name = 'username'
-    return render_template('home.html', title='Welcome', username=name)
+    return render_template('home.html', username=name)
 
 @app.route('/about')
 def about():
@@ -66,30 +68,40 @@ def login():
 @app.route('/redirect')
 def redirectPage():
     sp_oauth = create_spotify_oauth()
-    session.clear()
     code = request.args.get('code')
     token_info = sp_oauth.get_access_token(code)
-    session[TOKEN_CODE] = token_info
-    return redirect(url_for("chooseLabel", _external=True))
 
+    # Generate a unique session ID for the user
+    session_id = str(uuid4())
 
-def get_token():
-    token_info = session.get(TOKEN_CODE, None)
+    # Store the token information in the user's session
+    session[session_id] = token_info
+
+    # Redirect the user to the chooseLabel route, passing the session ID as a query parameter
+    return redirect(url_for("chooseLabel", session_id=session_id, _external=True))
+
+def get_token(session_id):
+    token_info = session.get(session_id, None)
     if not token_info:
-        raise "exception"
+        raise Exception("User not logged in")
     now = int(time.time())
     is_expired = token_info['expires_at'] - now < 60
-    if (is_expired):
+    if is_expired:
         sp_oauth = create_spotify_oauth()
         token_info = sp_oauth.refresh_access_token(token_info['refresh_token'])
+        session[session_id] = token_info  # Update the refreshed token in the user's session
     return token_info
 
 @app.route('/chooseLabel')
 def chooseLabel():
+    session_id = request.args.get('session_id')
+    token_info = get_token(session_id)
     return render_template('chooseLabel.html')
     
 @app.route('/artistLabel')
 def artistLabel():
+    session_id = request.args.get('session_id')
+    token_info = get_token(session_id)
     try:
         token_info = get_token()
     except:
@@ -133,6 +145,8 @@ def artistLabel():
 
 @app.route('/songLabel')
 def songLabel():
+    session_id = request.args.get('session_id')
+    token_info = get_token(session_id)
     try:
         token_info = get_token()
     except:
@@ -205,6 +219,8 @@ def get_top_words(lyrics_list):
 
 @app.route('/wordLabel')
 def wordLabel():
+    session_id = request.args.get('session_id')
+    token_info = get_token(session_id)
     try:
         token_info = get_token()
     except:
