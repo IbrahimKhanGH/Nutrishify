@@ -145,17 +145,17 @@ def songLabel():
     current_user_name = sp.current_user()['display_name']
 
     short_term = sp.current_user_top_tracks(
-        limit=15,
+        limit=10,
         offset=0,
         time_range=SHORT_TERM,
     )
     medium_term = sp.current_user_top_tracks(
-        limit=30,
+        limit=20,
         offset=0,
         time_range=MEDIUM_TERM,
     )
     long_term = sp.current_user_top_tracks(
-        limit=45,
+        limit=30,
         offset=0,
         time_range=LONG_TERM,
     )
