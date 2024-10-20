@@ -1,5 +1,5 @@
-{% macro nutritionContainer2(display_name, songs, id, duration) -%}
-    <div class="nutritionContainer2" id="{{ id }}">
+{% macro songLabel(display_name, songs, id, duration) -%}
+    <div class="songLabel" id="{{ id }}">
       {% if songs %}
       <div class="topWords">
         <section class="performance-facts2">
@@ -41,7 +41,7 @@
               </tr>
               <tr>
                 <th class = "song-name" colspan="2">
-                  <b>{{ (songs[0]['name']) }}</b>&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[0]['artists'][0]['name']) }}
+                  <b><a href="{{ (songs[0]['external_urls']['spotify']) }}" target="_blank" style="color: inherit; text-decoration: none;">{{ (songs[0]['name']) }}</a></b>&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[0]['artists'][0]['name']) }}
                 </th>
                 <td>
                   <b>1%</b>
@@ -50,7 +50,9 @@
               </tr>
               <tr>
                 <td class="blank-cell"></td>
-                <th class = "song-name">{{ (songs[1]['name']) }}&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[1]['artists'][0]['name']) }}</th>
+                <th class = "song-name">
+                  <a href="{{ (songs[1]['external_urls']['spotify']) }}" target="_blank" style="color: inherit; text-decoration: none;">{{ (songs[1]['name']) }}</a>&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[1]['artists'][0]['name']) }}
+                </th>
                 <td>
                   <b>2%</b>
                 </td>
@@ -58,7 +60,7 @@
               <tr>
                 <td class="blank-cell"></td>
                 <th class = "song-name">
-                  <i>{{ (songs[2]['name']) }}</i>&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[2]['artists'][0]['name']) }}
+                  <i><a href="{{ (songs[2]['external_urls']['spotify']) }}" target="_blank" style="color: inherit; text-decoration: none;">{{ (songs[2]['name']) }}</a></i>&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[2]['artists'][0]['name']) }}
                 </th>
                 <td>
                   <b>3%</b>
@@ -66,7 +68,7 @@
               </tr>
               <tr>
                 <th class = "song-name" colspan="2">
-                  <b>{{ (songs[3]['name']) }}</b>&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[3]['artists'][0]['name']) }}
+                  <b><a href="{{ (songs[3]['external_urls']['spotify']) }}" target="_blank" style="color: inherit; text-decoration: none;">{{ (songs[3]['name']) }}</a></b>&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[3]['artists'][0]['name']) }}
                 </th>
                 <td>
                   <b>4%</b>
@@ -74,7 +76,7 @@
               </tr>
               <tr>
                 <th class = "song-name" colspan="2">
-                  <b>{{ (songs[4]['name']) }}</b>&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[4]['artists'][0]['name']) }}
+                  <b><a href="{{ (songs[4]['external_urls']['spotify']) }}" target="_blank" style="color: inherit; text-decoration: none;">{{ (songs[4]['name']) }}</a></b>&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[4]['artists'][0]['name']) }}
                 </th>
                 <td>
                   <b>5%</b>
@@ -82,7 +84,7 @@
               </tr>
               <tr>
                 <th class = "song-name" colspan="2">
-                  <b>{{ (songs[5]['name']) }}</b>&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[5]['artists'][0]['name']) }}
+                  <b><a href="{{ (songs[5]['external_urls']['spotify']) }}" target="_blank" style="color: inherit; text-decoration: none;">{{ (songs[5]['name']) }}</a></b>&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[5]['artists'][0]['name']) }}
                 </th>
                 <td>
                   <b>6%</b>
@@ -90,7 +92,7 @@
               </tr>
               <tr class="thick-end">
                 <th class = "song-name" colspan="2">
-                  <b>{{ (songs[6]['name']) }}</b>&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[6]['artists'][0]['name']) }}
+                  <b><a href="{{ (songs[6]['external_urls']['spotify']) }}" target="_blank" style="color: inherit; text-decoration: none;">{{ (songs[6]['name']) }}</a></b>&nbsp;&nbsp;-&nbsp;&nbsp;{{ (songs[6]['artists'][0]['name']) }}
                 </th>
                 <td><b>7%</b></td>
               </tr>
@@ -151,10 +153,10 @@
           <p class="small-info">
             * Generated With <b class="link">Nutrishify.herokuapp.com</b>
           </p>
+          <img src="../static/spotify-logo.png" alt="Spotify Logo" style="width: 100px; height: auto; margin-top: 10px;">
     
         </section>
       </div>
       {% endif %}
     </div>
-    {%- endmacro %}
-    
+{%- endmacro %}

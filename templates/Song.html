@@ -16,14 +16,14 @@
 
   <body>
     {% include 'navbar.html' %}
-    {% from "nutritionContainer2.html" import nutritionContainer2 with context %}
+    {% from "songLabel.html" import songLabel with context %}
 
     <script>
         var activeLabel;
       
         function showContent(id) {
   // Hide all the nutrition containers
-  var nutritionContainers = document.querySelectorAll(".nutritionContainer2");
+  var nutritionContainers = document.querySelectorAll(".songLabel");
   nutritionContainers.forEach(function (container) {
     container.style.display = "none";
   });
@@ -58,13 +58,13 @@
       
         $(document).ready(function () {
   // Global variable
-  var element = $(".nutritionContainer2Wrapper");
+  var element = $(".songLabelWrapper");
 
   // Global variable
   var getCanvas;
 
   $("#downloadPicButton").on("click", function () {
-    var offScreen = document.querySelector(".nutritionContainer2Wrapper");
+    var offScreen = document.querySelector(".songLabelWrapper");
     window.scrollTo(0, 0);
     var clone = hiddenClone(offScreen);
     // Use clone with html2canvas and delete clone
@@ -155,14 +155,14 @@
     });
   </script>
 
-    <div style="width: 100%; height: auto" class="nutritionContainer2Wrapper">
+    <div style="width: 100%; height: auto" class="songLabelWrapper">
       <center>
 
-        {{ nutritionContainer2(user_display_name, short_term['items'], 'short_term_label', 'Last Month') }},
+        {{ songLabel(user_display_name, short_term['items'], 'short_term_label', 'Last Month') }},
 
-        {{ nutritionContainer2(user_display_name, medium_term['items'], 'medium_term_label', 'Last 6 Months') }},
+        {{ songLabel(user_display_name, medium_term['items'], 'medium_term_label', 'Last 6 Months') }},
 
-        {{ nutritionContainer2(user_display_name, long_term['items'], 'long_term_label', 'All Time') }}
+        {{ songLabel(user_display_name, long_term['items'], 'long_term_label', 'All Time') }}
       </center>
     </div>
 

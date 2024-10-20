@@ -16,19 +16,19 @@
 }
 
 
-.nutritionContainer {
+.wordLabel {
   padding: 0px;
   background-color: white; /* Add a background color to ensure the text is visible */
   color: black; /* Set the text color to black */
 }
 
-.nutritionContainer2 {
+.songLabel{
   padding: 0px;
   background-color: white; /* Add a background color to ensure the text is visible */
   color: black; /* Set the text color to black */
 }
 
-.nutritionContainer3{
+.artistLabel{
   padding: 0px;
   background-color: white; /* Add a background color to ensure the text is visible */
   color: black; /* Set the text color to black */

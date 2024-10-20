@@ -16,15 +16,15 @@
 
   <body>
     {% include 'navbar.html' %}
-    {% from "nutritionContainer3.html" import nutritionContainer3 with context %}
+    {% from "artistLabel.html" import artistLabel with context %}
 
 <script>
   var activeLabel;
 
   function showContent(id) {
     // set all of the other ones to invisible
-    for (let i = 0; i < document.querySelectorAll(".nutritionContainer3").length; i++) {
-      document.querySelectorAll(".nutritionContainer3")[i].style.display = "none";
+    for (let i = 0; i < document.querySelectorAll(".artistLabel").length; i++) {
+      document.querySelectorAll(".artistLabel")[i].style.display = "none";
     }
     document.getElementById(id).style.display = "inline-block";
     document.getElementById("downloadPicButton").style.display = "inline-block";
@@ -51,13 +51,13 @@
 
   $(document).ready(function () {
     // Global variable
-    var element = $(".nutritionContainer3Wrapper");
+    var element = $(".artistLabelWrapper");
 
     // Global variable
     var getCanvas;
 
     $("#downloadPicButton").on("click", function () {
-      var offScreen = document.querySelector(".nutritionContainer3Wrapper");
+      var offScreen = document.querySelector(".artistLabelWrapper");
       window.scrollTo(0, 0);
       var clone = hiddenClone(offScreen);
       // Use clone with html2canvas and delete clone
@@ -142,17 +142,13 @@
       </center>
     </div>
 
-    <div style="width: 100%; height: auto" class="nutritionContainer3Wrapper">
+    <div style="width: 100%; height: auto" class="artistLabelWrapper">
         <center>
-          {{ nutritionContainer3(user_display_name, short_term['items'], 'short_term_label', 'Last Month') }}
-          {{ nutritionContainer3(user_display_name, medium_term['items'], 'medium_term_label', 'Last 6 Months') }}
-          {{ nutritionContainer3(user_display_name, long_term['items'], 'long_term_label', 'All Time') }}
+          {{ artistLabel(user_display_name, short_term['items'], 'short_term_label', 'Last Month') }}
+          {{ artistLabel(user_display_name, medium_term['items'], 'medium_term_label', 'Last 6 Months') }}
+          {{ artistLabel(user_display_name, long_term['items'], 'long_term_label', 'All Time') }}
         </center>
       </div>
-      
-      
-
-      
 
     <center>
       <button class="generatePicButton" id="downloadPicButton">Download</button>

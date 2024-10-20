@@ -1,5 +1,5 @@
-{% macro nutritionContainer3(display_name, artist, id, duration) -%}
-    <div class="nutritionContainer3" id="{{ id }}">
+{% macro artistLabel(display_name, artist, id, duration) -%}
+    <div class="artistLabel" id="{{ id }}">
       {% if artist %}
       <div class="topWords">
         <section class="performance-facts3">
@@ -41,7 +41,7 @@
               </tr>
               <tr>
                 <th colspan="2">
-                  <b>{{ (artist[0]['name']) }}</b> <i class="genre"> &nbsp;&nbsp;&nbsp;</i> 
+                  <b><a href="{{ (artist[0]['external_urls']['spotify']) }}" target="_blank" style="color: inherit; text-decoration: none;">{{ (artist[0]['name']) }}</a></b> <i class="genre"> &nbsp;&nbsp;&nbsp;</i> 
                 </th>
                 <td>
                   <b>1%</b>
@@ -50,7 +50,9 @@
               </tr>
               <tr>
                 <td class="blank-cell"></td>
-                <th>{{ (artist[1]['name']) }}&nbsp;&nbsp;&nbsp;</th>
+                <th>
+                  <a href="{{ (artist[1]['external_urls']['spotify']) }}" target="_blank" style="color: inherit; text-decoration: none;">{{ (artist[1]['name']) }}</a>&nbsp;&nbsp;&nbsp;
+                </th>
                 <td>
                   <b>2%</b>
                 </td>
@@ -58,7 +60,7 @@
               <tr>
                 <td class="blank-cell"></td>
                 <th>
-                  <i>{{ (artist[2]['name']) }}</i>&nbsp;&nbsp;&nbsp;
+                  <i><a href="{{ (artist[2]['external_urls']['spotify']) }}" target="_blank" style="color: inherit; text-decoration: none;">{{ (artist[2]['name']) }}</a></i>&nbsp;&nbsp;&nbsp;
                 </th>
                 <td>
                   <b>3%</b>
@@ -66,7 +68,7 @@
               </tr>
               <tr>
                 <th colspan="2">
-                  <b>{{ (artist[3]['name']) }}</b> &nbsp;&nbsp;&nbsp;
+                  <b><a href="{{ (artist[3]['external_urls']['spotify']) }}" target="_blank" style="color: inherit; text-decoration: none;">{{ (artist[3]['name']) }}</a></b> &nbsp;&nbsp;&nbsp;
                 </th>
                 <td>
                   <b>4%</b>
@@ -74,7 +76,7 @@
               </tr>
               <tr>
                 <th colspan="2">
-                  <b>{{ (artist[4]['name']) }}</b>&nbsp;&nbsp;&nbsp;
+                  <b><a href="{{ (artist[4]['external_urls']['spotify']) }}" target="_blank" style="color: inherit; text-decoration: none;">{{ (artist[4]['name']) }}</a></b>&nbsp;&nbsp;&nbsp;
                 </th>
                 <td>
                   <b>5%</b>
@@ -82,7 +84,7 @@
               </tr>
               <tr>
                 <th colspan="2">
-                  <b>{{ (artist[5]['name']) }}</b>&nbsp;&nbsp;&nbsp;
+                  <b><a href="{{ (artist[5]['external_urls']['spotify']) }}" target="_blank" style="color: inherit; text-decoration: none;">{{ (artist[5]['name']) }}</a></b>&nbsp;&nbsp;&nbsp;
                 </th>
                 <td>
                   <b>6%</b>
@@ -90,7 +92,7 @@
               </tr>
               <tr class="thick-end">
                 <th colspan="2">
-                  <b>{{ (artist[6]['name']) }}</b>&nbsp;&nbsp;&nbsp;
+                  <b><a href="{{ (artist[6]['external_urls']['spotify']) }}" target="_blank" style="color: inherit; text-decoration: none;">{{ (artist[6]['name']) }}</a></b>&nbsp;&nbsp;&nbsp;
                 </th>
                 <td><b>7%</b></td>
               </tr>
@@ -104,13 +106,9 @@
                 <td colspan="2"> <b>User</b> </td>     <td>{{ display_name }} </td>
               </tr>
               
-            </tr>
-             
-            <tr class="thin-end">
-              <td colspan="2"><b>Top Artist</b></td> <td> {{ (artist[0]['name']) }}</td>
-            </tr>
-            </tr>
-
+              <tr class="thin-end">
+                <td colspan="2"><b>Top Artist</b></td> <td> {{ (artist[0]['name']) }}</td>
+              </tr>
               <tr class="thin-end">
     
                 <td colspan="2"><b>Date</b></td>
@@ -126,6 +124,8 @@
                   </script>
                   
                 </td>
+              </tr>
+              
             </tbody>
           </table>
           
@@ -148,12 +148,10 @@
           <p class="small-info download-text">
             * Generated With <span class="link">Nutrishify.herokuapp.com</span>
           </p>
-          
-          
-    
+          <img src="../static/spotify-logo.png" alt="Spotify Logo" style="width: 75px; height: auto; margin-top: 10px;">
+            
         </section>
       </div>
       {% endif %}
     </div>
-    {%- endmacro %}
-    
+{%- endmacro %}

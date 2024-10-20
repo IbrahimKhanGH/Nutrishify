@@ -1,4 +1,4 @@
-<html>
+<!-- <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=.8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -15,15 +15,15 @@
   </head>
   <body>
     {% include 'navbar.html' %}
-    {% from "nutritionContainer.html" import nutritionContainer with context %}
+    {% from "wordLabel.html" import wordLabel with context %}
 
   <script>
     var activeLabel;
   
     function showContent(id) {
 // Hide all the nutrition containers
-var nutritionContainers = document.querySelectorAll(".nutritionContainer");
-nutritionContainers.forEach(function (container) {
+var wordLabels = document.querySelectorAll(".wordLabel");
+wordLabels.forEach(function (container) {
 container.style.display = "none";
 });
 
@@ -57,13 +57,13 @@ getTopSongs(id);
   
     $(document).ready(function () {
       // Global variable
-      var element = $(".nutritionContainerWrapper");
+      var element = $(".wordLabelWrapper");
   
       // Global variable
       var getCanvas;
   
       $("#downloadPicButton").on("click", function () {
-        var offScreen = document.querySelector(".nutritionContainerWrapper");
+        var offScreen = document.querySelector(".wordLabelWrapper");
         window.scrollTo(0, 0);
         var clone = hiddenClone(offScreen);
         // Use clone with html2canvas and delete clone
@@ -147,14 +147,14 @@ getTopSongs(id);
     </center>
   </div>
 
-    <div style="width: 100%; height: auto" class="nutritionContainerWrapper">
+    <div style="width: 100%; height: auto" class="wordLabelWrapper">
       <center>
-        {{ nutritionContainer(user_display_name, short_term['items'],
+        {{ wordLabel(user_display_name, short_term['items'],
         'short_term_label', 'Last Month', short_term_lyrics,
-        short_term_top_words) }} {{ nutritionContainer(user_display_name,
+        short_term_top_words) }} {{ wordLabel(user_display_name,
         medium_term['items'], 'medium_term_label', 'Last 6 Months',
         medium_term_lyrics, medium_term_top_words) }} {{
-        nutritionContainer(user_display_name, long_term['items'],
+        wordLabel(user_display_name, long_term['items'],
         'long_term_label', 'All Time', long_term_lyrics, long_term_top_words)
         }}
       </center>
@@ -165,4 +165,4 @@ getTopSongs(id);
     </center>
   </body>
   {% include 'footer.html' %}
-</html>
+</html> -->
