@@ -23,7 +23,7 @@ def create_spotify_oauth():
     return SpotifyOAuth(
         client_id=CLIENT_ID,
         client_secret=CLIENT_SECRET,
-        redirect_uri="http://127.0.0.1:5000/redirect",
+        redirect_uri="https://nutrishify-b3190db7ad27.herokuapp.com/callback",
         scope="user-top-read user-library-read"
     )
 
