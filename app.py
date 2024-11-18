@@ -20,10 +20,15 @@ LONG_TERM = "long_term"
 
 
 def create_spotify_oauth():
+    if request.host.startswith('127.0.0.1') or request.host.startswith('localhost'):
+        redirect_uri = "http://127.0.0.1:5000/redirect"
+    else:
+        redirect_uri = "https://nutrishify-b3190db7ad27.herokuapp.com/callback"
+    
     return SpotifyOAuth(
         client_id=CLIENT_ID,
         client_secret=CLIENT_SECRET,
-        redirect_uri="https://nutrishify-b3190db7ad27.herokuapp.com/callback",
+        redirect_uri=redirect_uri,
         scope="user-top-read user-library-read"
     )
 
@@ -64,6 +69,7 @@ def login():
 
 
 @app.route('/redirect')
+@app.route('/callback')
 def redirectPage():
     sp_oauth = create_spotify_oauth()
     session.clear()
